@@ -1,22 +1,7 @@
-%div{:id => "news-cycle-ea", :class => "news-cycle"}
+%div#news-cycle-ea.news-cycle
   %dl
-    %dt
-      TitoloA
-    %dd 
-      contenutoA
-    %dt 
-      TitoloB
-    %dd 
-      contenutoB
-    %dt 
-      TitoloC
-    %dd 
-      contenutoC
-    %dt 
-      TitoloD
-    %dd 
-      contenutoD
-    %dt 
-      TitoloE
-    %dd 
-      contenutoE
+    - @widget_data.items.each do |item|
+      %dt
+        = item.primary_text[0..15]
+      %dd 
+        = snippet(sanitize(item.secondary_text), 50)

@@ -4,3 +4,8 @@
       %span.item
         %h2
           =link_to item.primary_text, item.link 
+        
+        - if !item.optional_text.is_a? String
+          = time_ago_in_words(item.optional_text) + " ago"
+        - else
+          = item.optional_text
