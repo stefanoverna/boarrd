@@ -39,3 +39,5 @@ Boarrd::Application.configure do
 
 end
 
+ActiveSupport::Dependencies.explicitly_unloadable_constants << 'Widget'
+ActiveSupport::Dependencies.autoload_once_paths.delete(File.join(Rails.root, 'widgets'))

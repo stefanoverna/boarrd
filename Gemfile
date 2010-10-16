@@ -17,6 +17,8 @@ gem "responders"
 gem "scoped_search"
 gem "friendly_id", "~> 3.1"
 gem "paperclip"
+gem "validatable"
+gem "roxml"
 gem "jammit", :git => "http://github.com/documentcloud/jammit.git"
 
 group :development do
