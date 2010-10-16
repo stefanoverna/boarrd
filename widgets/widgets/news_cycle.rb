@@ -1,19 +1,9 @@
 module Widgets
-  module NewsCycle
+  class NewsCycle < BaseWidget
 
-    def self.available_inputs
-      [
-        Widgets::NewsTicker::FeedInput
-      ]
-    end
-
-    def self.slug
-      "news_cycle"
-    end
-
-    def self.title
-      "Cycling News Widget"
-    end
+    self.inputs = [ Widgets::NewsTicker::FeedInput ]
+    self.slug = :"news-cycle"
+    self.title = "Cycling News Widget"
 
   end
 end

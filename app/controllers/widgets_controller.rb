@@ -7,28 +7,34 @@ class WidgetsController < ApplicationController
     @dashboard = Dashboard.find(params[:dashboard_id])
   end
 
-  def create
+  def show
+    @widget = Widget.find(params[:id])
+    render :template => "widgets/view"
+  end
 
-    @widget_slug = params[:widget][:widget_type]
+  def create
 
     @widget = Widget.new(params[:widget])
     @widget.dashboard = @dashboard
-
-    widget_module = Widgets::available_widgets.find do |widget|
-      widget.slug == @widget_slug
-    end
-
-    @widget.widget_type = widget_module.name
 
     maximum_position = Widget.where(:dashboard_id => @dashboard, :area => @widget.area).maximum("area_position")
     @widget.area_position = maximum_position ? maximum_position + 1 : 0
 
     if @widget.save
-      render :template => ("widgets/%s/view" % widget_module.slug)
+      render :template => "widgets/view"
     else
       render :template => "widgets/errors"
     end
 
+  end
+
+  def update
+    throw "MERDA"
+  end
+
+  def settings
+    @widget = Widget.find(params[:id])
+    render :layout => false
   end
 
 end

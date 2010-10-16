@@ -6,7 +6,10 @@ require 'roxml'
 require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "input")
 require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "configurable")
 
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "base_widget")
 require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_ticker")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_multiple")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_cycle")
 
 module Widgets
 
@@ -16,6 +19,12 @@ module Widgets
       Widgets::NewsCycle,
       Widgets::NewsMultiple
     ]
+  end
+
+  def self.find_by_slug(slug)
+    widget_module = self.available_widgets.find do |widget|
+      widget.slug == slug.to_sym
+    end
   end
 
 end

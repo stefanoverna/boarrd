@@ -1,0 +1,9 @@
+var $widget_content = $("<%= raw escape_javascript( render :partial => "widgets/#{@widget.widget_type}/content" )%>");
+var $widget_settings = $("<%= raw escape_javascript( render :partial => "widgets/settings" )%>");
+widgetObj = widget("<%= @widget.guid %>");
+widgetObj.setWidgetType("<%= @widget_slug %>")
+widgetObj.setWidgetContent($widget_content);
+widgetObj.setWidgetSettings($widget_settings);
+widgetObj.setMode("normal");
+
+<%= render :partial => "widgets/#{@widget.widget_type}/javascript" %>
