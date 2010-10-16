@@ -22,12 +22,26 @@ jQuery(document).ready(function($) {
 
   Widget.prototype = {
     init: function(area, guid) {
+      var self = this;
+      this._dashboard_data = $(".dashboard").metadata({type: "elem", name: "script"});
       this._guid = guid;
       this._area = area;
       this._$dom = $(".dashboard .widget-template > .widget").clone();
       this._$dom.insertBefore("#"+area+" .add-new-widget");
       this._$dom.find(".new-mode #widget_area").val(area);
       this._$dom.find(".new-mode #widget_guid").val(guid);
+      this._$dom.find(".new-mode #widget_widget_type").change(function() {
+        var widget_type = $(this).val();
+        $.ajax({
+          url: self._dashboard_data.input_for_path.replace(":widget_type", widget_type),
+          success: function(dom) {
+            if (self._$widget_input_field) {
+              self._$widget_input_field.remove();
+            }
+            self._$widget_input_field = $(dom).insertBefore(self._$dom.find(".new-mode #widget_area"));
+          }
+        });
+      });
       this.setMode('new');
     },
     setMode: function(mode) {

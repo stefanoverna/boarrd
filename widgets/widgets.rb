@@ -18,4 +18,10 @@ module Widgets
     ]
   end
 
+  def self.find_by_slug(slug)
+    widget_module = self.available_widgets.find do |widget|
+      widget.slug == slug
+    end
+  end
+
 end

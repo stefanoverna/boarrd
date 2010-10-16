@@ -35,6 +35,14 @@ module Widgets
         end
       end
 
+      def self.title
+        "Feed Input"
+      end
+
+      def self.slug
+        "feed_input"
+      end
+
     end
   end
 end

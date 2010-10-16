@@ -13,18 +13,13 @@ class WidgetsController < ApplicationController
 
     @widget = Widget.new(params[:widget])
     @widget.dashboard = @dashboard
-
-    widget_module = Widgets::available_widgets.find do |widget|
-      widget.slug == @widget_slug
-    end
-
-    @widget.widget_type = widget_module.name
+    @widget.widget_type = Widgets::find_by_slug(@widget_slug).name
 
     maximum_position = Widget.where(:dashboard_id => @dashboard, :area => @widget.area).maximum("area_position")
     @widget.area_position = maximum_position ? maximum_position + 1 : 0
 
     if @widget.save
-      render :template => ("widgets/%s/view" % widget_module.slug)
+      render :template => "widgets/%s/view" % Widgets::find_by_slug(@widget_slug).slug
     else
       render :template => "widgets/errors"
     end
