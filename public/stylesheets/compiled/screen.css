@@ -2799,11 +2799,22 @@ body {
   line-height: 20px;
 }
 /* line 10, ../../../app/stylesheets/partials/_layout.sass */
+body a {
+  color: #008ee8;
+  text-decoration: none;
+  outline: none;
+}
+/* line 14, ../../../app/stylesheets/partials/_layout.sass */
+body a:hover {
+  color: #ec8526;
+  text-decoration: none;
+}
+/* line 19, ../../../app/stylesheets/partials/_layout.sass */
 body #hld {
   background: url(/images/admin/hld.jpg) repeat-x scroll 0 0 transparent;
   min-height: 402px;
 }
-/* line 14, ../../../app/stylesheets/partials/_layout.sass */
+/* line 23, ../../../app/stylesheets/partials/_layout.sass */
 body #hld .wrapper {
   margin: 0 auto;
   min-width: 960px;
@@ -2961,9 +2972,9 @@ body #hld .wrapper {
 
 /* line 1, ../../../app/stylesheets/partials/_login.sass */
 .block.small.center.login {
-  width: 470px;
+  width: 550px;
   background: white url(/images/admin/bnd.gif) bottom center repeat-x;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 100px;
   padding-bottom: 5px;
 }
@@ -2990,7 +3001,7 @@ body #hld .wrapper {
 }
 /* line 16, ../../../app/stylesheets/partials/_form.sass */
 .block form input[type=text], .block form input[type=email], .block form input[type=password] {
-  width: 410px;
+  width: 492px;
   background: #fefefe;
   border: 1px solid #bbbbbb;
   font-family: "Lucida Grande", Verdana, sans-serif;

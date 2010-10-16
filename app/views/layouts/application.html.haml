@@ -6,8 +6,7 @@
   %body
     #hld
       .wrapper
-        = render :partial => 'layouts/navigation'
-        = block do
+        = block :block_class => "small login center" do
           = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize] do
             = yield :actions
           = block_content do

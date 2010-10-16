@@ -15,6 +15,7 @@ gem "simple_form"
 gem "convenient_scopes"
 gem "responders"
 gem "scoped_search"
+gem "friendly_id", "~> 3.1"
 gem "paperclip"
 gem "jammit", :git => "http://github.com/documentcloud/jammit.git"
 

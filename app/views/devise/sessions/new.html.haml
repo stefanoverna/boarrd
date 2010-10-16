@@ -1,14 +1,13 @@
-= block :block_class => "small center login" do
-  = block_head "Login" do
-    = render :partial => "devise/shared/links"
-  = block_content do
-    = render :partial => 'layouts/flashes'
-    = render :partial => 'layouts/form_errors', :locals => {:resource => resource}
-    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-      = f.input :email
-      = f.input :password
-      .input
-        = f.submit "Login"
-        - if devise_mapping.rememberable?
-          = f.check_box :remember_me
-          = f.label :remember_me, :class => "inline"
+= render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  = f.input :email
+  = f.input :password
+  .input
+    = f.submit "Login"
+    - if devise_mapping.rememberable?
+      = f.check_box :remember_me
+      = f.label :remember_me, :class => "inline"
+      
+= content_for :actions do
+  = render :partial => "devise/shared/links"
+
