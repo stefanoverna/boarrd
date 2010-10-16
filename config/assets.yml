@@ -12,4 +12,5 @@ javascripts:
   - public/javascripts/jquery.ui.js
   - public/javascripts/jquery.rails.js
   - public/javascripts/jquery.metadata.js
+  - public/javascripts/jquery.easyAccordion.js
   - public/javascripts/application.js
