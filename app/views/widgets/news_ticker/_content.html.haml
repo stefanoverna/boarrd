@@ -1,2 +1,11 @@
-%h1 News Ticker Widget!
-%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus accumsan vulputate. Quisque dui lorem, cursus a bibendum non, sollicitudin eget nisl. Nullam porttitor arcu dictum dolor porttitor pulvinar. Donec viverra mattis pretium. Quisque a mauris tortor. Phasellus quis lacus id urna eleifend ultricies et sed tortor. Vivamus nisl arcu, porttitor ut placerat in, molestie at arcu.
+.trigger
+  #headline
+    - @widget_data.items.each do |item|
+      %span.item
+        %h2
+          =link_to item.primary_text, item.link 
+        
+        - if !item.optional_text.is_a? String
+          = time_ago_in_words(item.optional_text) + " ago"
+        - else
+          = item.optional_text

@@ -1,4 +1,10 @@
 $widget_content.each(function() {
   var $this = $(this);
-  //alert($this.find("h1").length);
+
+  $('#headline', this).innerfade({
+		speed: 1000,
+		timeout: 5000,
+		type: 'sequence'
+	});
+
 });
