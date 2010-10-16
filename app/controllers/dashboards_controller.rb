@@ -18,7 +18,8 @@ class DashboardsController < ApplicationController
 
     available_widgets = Widgets::available_widgets.map do |widget|
       {
-        :name => widget.name.dasherize,
+        :type => widget.name.dasherize,
+        :name => widget.title,
         :inputs => widget.available_inputs.map do |input|
           input.name
         end
@@ -26,6 +27,7 @@ class DashboardsController < ApplicationController
     end
 
     @dashboard_settings = {
+      :dashboard_path => dashboard_path(@dashboard),
       :dashboard_areas_widgets => areas,
       :available_widgets => available_widgets
     }

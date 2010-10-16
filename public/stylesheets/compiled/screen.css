@@ -3437,3 +3437,21 @@ body #hld .wrapper {
   -moz-opacity: 1;
   opacity: 1;
 }
+
+/* line 5, ../../../app/stylesheets/partials/_dashboard.sass */
+.dashboard {
+  width: 960px;
+  margin: 0px auto;
+}
+/* line 9, ../../../app/stylesheets/partials/_dashboard.sass */
+.dashboard .column {
+  width: 460px;
+  margin: 0px 10px;
+  background-color: red;
+  float: left;
+}
+
+/* line 1, ../../../app/stylesheets/partials/widgets/_news_ticker.sass */
+.news_ticker {
+  height: 220px;
+}

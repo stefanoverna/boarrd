@@ -8,5 +8,8 @@ module Widgets
         Widgets::NewsTicker::FeedInput
       ]
     end
+    def self.title
+      "NewsTicker"
+    end
   end
 end
