@@ -1,0 +1,14 @@
+---
+
+package_assets: on
+compress_assets: on
+
+javascripts:
+  ie:
+  - public/javascripts/ie-css3.js
+  - public/javascripts/html5.js
+  base:
+  - public/javascripts/jquery.js
+  - public/javascripts/jquery.ui.js
+  - public/javascripts/jquery.rails.js
+  - public/javascripts/application.js
