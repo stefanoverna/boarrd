@@ -10,7 +10,7 @@ class WidgetsController < ApplicationController
   def show
     @widget = Widget.find(params[:id])
 
-    render :template => "widgets/view"
+    render_view
   end
 
   def create
@@ -22,7 +22,8 @@ class WidgetsController < ApplicationController
     @widget.area_position = maximum_position ? maximum_position + 1 : 0
 
     if @widget.save
-      render :template => "widgets/view"
+
+      render_view
     else
       render :template => "widgets/errors"
     end
@@ -33,11 +34,23 @@ class WidgetsController < ApplicationController
     @widget = Widget.find(params[:id])
     @widget.settings = params[:widget_settings]
 
-    if @widget.save
-      render :template => "widgets/view"
+    if @widget.save and @widget.all_valid?
+      render_view
     else
       render :template => "widgets/errors"
     end
+  end
+
+  def render_view
+
+    @widget_data = nil
+
+    begin
+      @widget_data = @widget.widget_data
+    rescue
+    end
+
+    render :template => "widgets/view"
   end
 
 end

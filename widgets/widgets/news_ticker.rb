@@ -42,12 +42,12 @@ module Widgets
         unless self.valid?
           throw :validation_errors
         end
-        feed = Feedzirra::Feed.fetch_and_parse(self.url)
+        feed = FeedNormalizer::FeedNormalizer.parse open(self.url)
         self.items = []
         feed.entries[0..self.items_count.to_i].each do |entry|
           item = NewsItem.new
           item.title = entry.title
-          item.published_at = entry.published
+          item.published_at = entry.date_published
           self.items << item
         end
       end
