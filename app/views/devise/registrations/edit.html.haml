@@ -1,0 +1,22 @@
+= render :partial => 'layouts/flashes'
+= render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  = f.input :email
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :description
+  = f.input :birthday
+  = f.input :gender_male
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :current_password  
+  .input
+    = f.submit "Update"
+    
+= content_for :actions do
+  %ul
+    %li= link_to "Show", resource
+  
+
+

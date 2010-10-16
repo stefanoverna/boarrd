@@ -1,0 +1,13 @@
+= block :block_class => "small center login" do
+  = block_head "Change your Password" do
+    = render :partial => "devise/shared/links"
+  = block_content do
+    = render :partial => 'layouts/flashes'
+    = render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+    = render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+      = f.hidden_field :reset_password_token
+      = f.input :password
+      = f.input :password_confirmation
+      .input
+        = f.submit "Change password!", :class => "long"

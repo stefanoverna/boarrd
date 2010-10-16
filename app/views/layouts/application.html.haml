@@ -1,14 +1,15 @@
 !!! strict
 %html
   %head
-    = csrf_meta_tag
-    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
-    = include_javascripts :base
-
-    /[if IE]
-      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-      = include_javascripts :ie
-
+    = render :partial => 'layouts/head'
+    
   %body
-    = yield
+    #hld
+      .wrapper
+        = render :partial => 'layouts/navigation'
+        = block do
+          = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize] do
+            = yield :actions
+          = block_content do
+            = render :partial => 'layouts/flashes'
+            = yield

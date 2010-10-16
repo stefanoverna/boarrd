@@ -1,0 +1,4 @@
+- [:alert, :notice, :info].each do |type|
+  - if flash[type]
+    = message type do
+      = flash[type]

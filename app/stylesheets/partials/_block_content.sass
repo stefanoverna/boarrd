@@ -1,0 +1,117 @@
+.block
+  .block_content
+    :overflow hidden
+    :background #fff
+    :border-left 1px solid #ccc
+    :border-right 1px solid #ccc
+    :padding 10px 20px 0
+    h1, h2
+      :font-family "Yanone Kaffeesatz", "Trebuchet MS", Arial, sans-serif
+      :font-size 18px
+      :font-weight normal
+      :color #454545
+      :margin-bottom 10px
+    h3
+      :font-family "Lucida Grande", Helvetica, Arial, sans-serif
+      :font-size 14px
+      :font-weight bold
+      :color #666
+      :margin-bottom 5px
+    h4
+      :font-family Arial, Helvetica, sans-serif
+      :font-size 13px
+      :font-weight bold
+      :color #666
+      :margin-bottom 5px
+  table
+    :text-align left
+    :margin-bottom 15px
+    :border-top 1px solid #ddd
+    tr
+      &.odd td
+        :background #F4F4F4
+      td
+        :border-bottom 1px solid #ddd
+        :padding 10px
+        :line-height normal
+        :text-align left
+        
+        span.empty
+          :color #ddd
+      th
+        :border-bottom 1px solid #ddd
+        :padding 10px
+        :line-height normal
+        :text-align left
+        :font-weight bold
+        :background #E9E9E9
+        &.headerSortUp
+          :color #333
+          :background url(/images/admin/sortd.gif) 95% center no-repeat
+        &.headerSortDown
+          :color #333
+          :background url(/images/admin/sorta.gif) 95% center no-repeat
+      td.delete
+        :text-align right
+        :font-size 11px
+        a
+          :color #666
+          &:hover
+            :color #dd0000
+  .tableactions
+    :overflow hidden
+    :padding-bottom 20px
+    :float left
+    select
+      :width 100px
+      :margin-right 5px
+      :vertical-align middle
+      :outline none
+  .pagination
+    :font-size 10px
+    :font-weight bold
+    :padding-bottom 15px
+    :padding-top 15px
+    :border-top 1px solid #eee
+    &.right
+      :float right
+      :text-align right
+      :padding-top 1px
+      :border 0
+      :width 500px
+      :overflow hidden
+    a
+      :border 1px solid #ccc
+      :-webkit-border-radius 3px
+      :-moz-border-radius 3px
+      :border-radius 3px
+      :padding 3px 6px
+      :margin 0 1px
+      &.active
+        :background #39a3e6
+        :border 1px solid #0082d5
+        :color #fff
+      &:hover
+        :color #fff
+        :background #ec8526
+        :border 1px solid #d77011
+  .block_content
+    ul
+      :padding-left 15px
+      :padding-bottom 15px
+    ol
+      :padding-left 15px
+      :padding-bottom 15px
+      :list-style-position inside
+    ul li
+      :margin-bottom 5px
+      :padding-left 15px
+      :background url(/images/admin/li.gif) 0 7px no-repeat
+    ol li
+      :margin-bottom 5px
+  hr
+    :height 1px
+    :border 0
+    :background no-repeat
+    :border-bottom 1px solid #ddd
+    :margin-bottom 15px
