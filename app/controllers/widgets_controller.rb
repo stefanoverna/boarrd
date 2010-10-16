@@ -47,7 +47,7 @@ class WidgetsController < ApplicationController
 
     begin
       @widget_data = @widget.widget_data
-    rescue
+    rescue Widgets::ValidationError
     end
 
     render :template => "widgets/view"

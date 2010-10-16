@@ -16,10 +16,13 @@ gem "convenient_scopes"
 gem "responders"
 gem "scoped_search"
 gem "friendly_id", "~> 3.1"
+gem "sanitize"
 gem "paperclip"
 gem "roxml"
 gem "jammit", :git => "http://github.com/documentcloud/jammit.git"
+
 gem "feed-normalizer"
+gem "icalendar"
 
 group :development do
   gem "rails-erd"

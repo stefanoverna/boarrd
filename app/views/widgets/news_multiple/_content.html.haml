@@ -1,3 +1,13 @@
-- @widget_data.items.each do |item|
-  %h1= item.title
-  %p= item.published_at.to_s
+%ul.items
+  - @widget_data.items.each do |item|
+    %li
+      .header
+        %h3.primary_text= link_to item.primary_text, item.link
+        - if item.optional_text
+          %span.optional_text
+            - if !item.optional_text.is_a? String
+              = time_ago_in_words(item.optional_text) + " ago"
+            - else
+              = item.optional_text
+      - if item.secondary_text
+        %p.secondary_text= snippet(sanitize(item.secondary_text), 30)

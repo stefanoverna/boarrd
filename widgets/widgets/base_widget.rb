@@ -9,7 +9,7 @@ module Widgets
 
       def find_input_by_slug(slug)
         self.inputs.find do |input|
-          input.slug = slug.to_sym
+          input.slug == slug.to_sym
         end
       end
     end
