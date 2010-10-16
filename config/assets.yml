@@ -18,4 +18,5 @@ javascripts:
   - public/javascripts/excanvas.js
   - public/javascripts/dump.js
   - public/javascripts/jquery.innerfade.js
+  - public/javascripts/jquery.zweatherfeed.js
   - public/javascripts/application.js

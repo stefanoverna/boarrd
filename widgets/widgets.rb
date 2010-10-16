@@ -2,6 +2,15 @@ require 'active_support/configurable'
 require 'active_support/concern'
 require 'roxml'
 
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "input")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "validation_error")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "configurable")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "base_widget")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_ticker")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_multiple")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_cycle")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "special_weather")
+
 module Widgets
 
   def self.available_widgets
@@ -9,6 +18,7 @@ module Widgets
       Widgets::NewsTicker,
       Widgets::NewsCycle,
       Widgets::NewsMultiple,
+      Widgets::SpecialWeather
       Widgets::PieChart,
       Widgets::BarChart
     ]

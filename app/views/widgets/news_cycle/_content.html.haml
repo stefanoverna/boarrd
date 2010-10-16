@@ -2,6 +2,6 @@
   %dl
     - @widget_data.items.each do |item|
       %dt
-        = item.primary_text[0..15]
-      %dd 
-        = snippet(sanitize(item.secondary_text), 50)
+        = item.primary_text
+      %dd
+        = link_to snippet(sanitize(item.secondary_text), 50), item.link
