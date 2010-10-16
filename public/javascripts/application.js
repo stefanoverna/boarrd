@@ -57,6 +57,7 @@ jQuery(document).ready(function($) {
           url: self._dashboard_data.widget_show_path.replace(":id", self._guid),
           dataType: 'script'
         });
+        this.setMode('normal');
       }
 
     },
