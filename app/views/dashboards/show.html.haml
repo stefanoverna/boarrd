@@ -10,10 +10,12 @@
     != @dashboard_settings.to_json
   
   .widget-template
-    .widget
-      .widget-header
+    .widget-box
+      .widget-head
         .title
+          %h1 Pippo
         .actions
+          %img{:src => "/images/admin/gears.png", :alt => "Settings"}
       .widget-content
         .mode.new-mode
           = simple_form_for [@dashboard, Widget.new], :remote => true do |f|

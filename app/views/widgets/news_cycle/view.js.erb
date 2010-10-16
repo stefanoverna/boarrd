@@ -1,8 +1,8 @@
 var $widget_content = $("<%= raw escape_javascript( render :partial => "widgets/news_cycle/view" )%>");
-widget = widget("<%= @widget.guid %>");
-widget.setWidgetType("<%= @widget_slug %>")
-widget.setContent($widget_content);
-widget.setMode("normal");
+widgetObj = widget("<%= @widget.guid %>");
+widgetObj.setWidgetType("<%= @widget_slug %>")
+widgetObj.setContent($widget_content);
+widgetObj.setMode("normal");
 
 $widget_content.each(function() {
   var $this = $(this);

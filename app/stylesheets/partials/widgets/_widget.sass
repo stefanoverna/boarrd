@@ -1,15 +1,16 @@
-.widget  
+.widget-box
   :background #30322F
   :opacity 0.9
   :bordersolid 2px #111111
   +box-shadow(#111111, 5px, 5px, 5px)
   +border-corner-radius(top,left,5px)
   +border-corner-radius(top,right,5px)
+  :margin-bottom 10px
 
 .widget-content 
-  :margin 20px 20px 20px 20px
+  :padding 20px
 
-.widget-title div 
+.widget-head 
   :background #2271CD
   :font-size 16px 
   :color #FFF
@@ -19,6 +20,21 @@
   +border-corner-radius(top,left,5px)
   +border-corner-radius(top,right,5px)
   +box-shadow(#111111, 0px, 2px, 3px)
+  +clearfix
+
+  .title
+    :float left
+    h1
+      :font-size 18px 
+          
+  .actions
+    :float right
+    :margin-right 5px
+    :margin-top 2px
+    img
+      :opacity 0.5
+    img:hover
+      :opacity 1
 
 .widget a 	 
   :color #8BB698
