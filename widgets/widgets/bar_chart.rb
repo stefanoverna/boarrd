@@ -34,7 +34,59 @@ module Widgets
 
     end
 
-    self.inputs = [ Widgets::PieChart::GithubIssues, Widgets::BarChart::GithubProjectsIssues ]
+
+    class GithubTopCommitters < PieChart::Input
+      include Widgets::Configurable
+
+      setting :username do
+        label "Github User"
+        input :as => :string
+        is_required
+      end
+
+      setting :repository do
+        label "Repository"
+        input :as => :string
+        is_required
+      end
+
+      setting :branch do
+        label "Branch"
+        input :as => :string
+        is_required
+      end
+
+      def refresh
+        unless self.valid?
+          raise ValidationError, self.errors
+        end
+
+        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}").read)
+
+        commits_per_user = {}
+        commit_list["commits"].entries.each do |commit|
+          commits_per_user[commit["committer"]["name"]] ||= 0
+          commits_per_user[commit["committer"]["name"]] += 1
+        end
+
+        slices = []
+        commits_per_user.each_pair do |name, commits|
+          slice = PieChart::Slice.new
+          slice.label = name
+          slice.amount = commits
+          slices << slice
+        end
+
+        self.slices = slices.sort_by(&:amount).reverse[0..4]
+
+      end
+
+      self.title = "Github Top Committers"
+      self.slug = :"github-top-committers"
+
+    end
+
+    self.inputs = [ Widgets::PieChart::GithubIssues, Widgets::BarChart::GithubProjectsIssues, Widgets::BarChart::GithubTopCommitters ]
     self.slug = :"bar-chart"
     self.title = "Bar Chart"
 
