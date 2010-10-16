@@ -53,12 +53,12 @@ module Widgets
       end
 
       self.title = "Feed Input"
-      self.slug = :feed_input
+      self.slug = :"feed-input"
 
     end
 
     self.inputs = [ Widgets::NewsTicker::FeedInput ]
-    self.slug = :news_ticker
+    self.slug = :"news-ticker"
     self.title = "NewsTicker Widget"
 
   end

@@ -7,6 +7,11 @@ class WidgetsController < ApplicationController
     @dashboard = Dashboard.find(params[:dashboard_id])
   end
 
+  def show
+    @widget = Widget.find(params[:id])
+    render :template => "widgets/view"
+  end
+
   def create
 
     @widget = Widget.new(params[:widget])
@@ -23,8 +28,12 @@ class WidgetsController < ApplicationController
 
   end
 
+  def update
+    throw "MERDA"
+  end
+
   def settings
-    @widget = Widget.find_by_guid(params[:id])
+    @widget = Widget.find(params[:id])
     render :layout => false
   end
 
