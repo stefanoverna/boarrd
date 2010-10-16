@@ -1,0 +1,29 @@
+- if collection.any?
+
+  %table.sortable(width="100%")
+    %thead
+      %tr
+        - resource_class.ui_editable_attributes.each do |a|
+          %th.header= a.to_s.humanize
+        %th Actions
+    %tbody
+      - collection.each do |r|
+        %tr
+          - resource_class.ui_editable_attributes.each do |a|
+            - if a == :title or a == :email
+              %td= link_to r[a], resource_url(r)
+            - else
+              %td
+                - if r[a]
+                  = r[a]
+                - else
+                  %span.empty= "Empty field"
+                
+          %td
+            = link_to "Edit", edit_resource_url(r) if can? :update, r
+            = link_to "Destroy", resource_url(r), :confirm => 'Are you sure?', :method => :delete if can? :update, r
+            
+= content_for :actions do
+  %ul
+    - if can? :create, resource_class.new
+      %li= link_to "New", new_resource_url

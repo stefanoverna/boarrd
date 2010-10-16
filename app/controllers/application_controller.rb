@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
   def layout_by_resource
-    if devise_controller? and !(controller_name.to_sym == :registrations and action_name.to_sym == :edit)
-      "sessions"
+    if controller_name.to_sym == :dashboards and action_name.to_sym == :show
+      "dashboard"
     else
       "application"
     end
@@ -18,6 +18,36 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
     redirect_to new_user_session_url
+  end
+
+  before_filter do
+    @title = case "#{self.controller_name}##{self.action_name}"
+      when "registrations#new"
+        "Sign up to Boardd!"
+      when "registrations#edit"
+        "Edit Profile"
+      when "passwords#new"
+        "Forgot your password?"
+      when "passwords#edit"
+        "Change password!"
+      when "sessions#new"
+        "Login to Boarrd."
+      else
+        model_name = self.controller_name.classify
+
+        model_name = "Boarrd" if model_name == "Dashboard"
+
+        case action_name.to_sym
+          when :new
+            "Create a new #{model_name}"
+          when :edit
+            "Edit #{model_name}"
+          when :show
+            "#{model_name} Details"
+          when :index
+            "#{model_name.pluralize}"
+        end
+    end
   end
 
 end

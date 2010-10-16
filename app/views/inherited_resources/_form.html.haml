@@ -1,0 +1,14 @@
+= simple_form_for (resource, :url => resource.new_record? ? collection_url : resource_url(resource)) do |f|
+  
+  - if resource.errors.any?
+    = message :alert do
+      = resource.errors.full_messages.join(", ")
+    
+  - resource_class.ui_editable_attributes.each do |a|
+    = f.input a, resource_class.simple_form_options_for(a).merge!({:binding => controller})
+    
+  - resource_class.ui_editable_associations.each do |a|
+    = f.association a, resource_class.simple_form_options_for(a).merge!({:binding => controller})
+
+  .input
+    = f.button :submit

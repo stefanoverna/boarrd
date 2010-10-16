@@ -1,13 +1,9 @@
-= block :block_class => "small center login" do
-  = block_head "Forgot your Password?" do
-    %ul
-      %li= link_to "Back", :back
-  = block_content do
-    = render :partial => 'layouts/flashes'
-    = render :partial => 'layouts/form_errors', :locals => {:resource => resource}
-    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-      = f.input :email
-      .input
-        = f.submit "Renew password!", :class => "long"
-
+= render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  = f.input :email
+  .input
+    = f.submit "Renew password!", :class => "long"
    
+= content_for :actions do
+  = render :partial => "devise/shared/links"
+

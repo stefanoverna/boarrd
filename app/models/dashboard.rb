@@ -5,4 +5,6 @@ class Dashboard < ActiveRecord::Base
   validates_presence_of :user
   validates_presence_of :title
   normalize_attributes :title
+
+  set_ui_editable_associations
 end
