@@ -1,4 +1,11 @@
+var $widget_content = $("<%= raw escape_javascript( render :partial => "widgets/news_cycle/view" )%>");
 widget = widget("<%= @widget.guid %>");
 widget.setWidgetType("<%= @widget_slug %>")
-widget.setContent("<%= raw escape_javascript( render :partial => "widgets/news_ticker/view" )%>");
+widget.setContent($widget_content);
 widget.setMode("normal");
+
+$widget_content.each(function() {
+  var $this = $(this);
+  alert($this.find("h1").length);
+});
+
