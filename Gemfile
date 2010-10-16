@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem "rails", "3.0.1"
 gem "ruby-mysql"
-gem "sqlite3-ruby", :require => "sqlite3"
+gem "sqlite3-ruby", "1.2.5"
 gem "haml"
 gem "compass"
 gem "devise"
