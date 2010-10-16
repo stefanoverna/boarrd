@@ -1,7 +1,7 @@
 module Widgets
   class Input
     include ROXML
-    include Validatable
+    include ActiveModel::Validations
 
     class << self
       attr_accessor :title, :slug

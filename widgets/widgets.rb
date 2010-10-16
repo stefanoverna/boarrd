@@ -1,6 +1,5 @@
 require 'active_support/configurable'
 require 'active_support/concern'
-require 'validatable'
 require 'roxml'
 
 require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "input")

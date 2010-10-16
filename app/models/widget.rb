@@ -19,4 +19,12 @@ class Widget < ActiveRecord::Base
     widget_class.find_input_by_slug(input_type)
   end
 
+  def dashed_widget_type
+    widget_type.gsub /-/, "_"
+  end
+
+  def validate_widget_settings
+    input_class.new(settings).valid?
+  end
+
 end
