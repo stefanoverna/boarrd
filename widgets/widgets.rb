@@ -12,7 +12,9 @@ module Widgets
 
   def self.available_widgets
     [
-      Widgets::NewsTicker
+      Widgets::NewsTicker,
+      Widgets::NewsCycle,
+      Widgets::NewsMultiple
     ]
   end
 
