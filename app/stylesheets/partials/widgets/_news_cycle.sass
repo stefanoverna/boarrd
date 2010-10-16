@@ -6,8 +6,7 @@
 #news-cycle-ea
   :width 450px
   :height 150px
-  :background #D5DFAB
-  :border 1px solid #D5DFAB
+  //:background #D5DFAB
   :color black
 
   h2
@@ -20,44 +19,38 @@
     :height 25px
     :line-height 25px
     :text-align right
-    :padding 0 10px 0 0
+    :padding 0 7px 0 0
     :font-weight bold
     :text-transform uppercase
     :letter-spacing 1px
-    :background #111
-    :color #8BB698
-    :border-bottom 1px solid #587062
+    :background #323537
+    //+linear-gradient(color-stops(#323537 48%, #2B2E31 49%))
+    :color white
+    :border-bottom 3px solid #262626
+    :border-top 1px solid #3D3C3C
+    :border-left 2px solid #464646
+    //:border-right 1px solid #5D5C5C
+    +border-bottom-left-radius(7px)
+    :overflow hidden
     
   dt.active
     :cursor pointer
-    :color white
-    :background #111
+    :color #ddd
+    //:background #111
 
   dt.hover
-    :color #587062
+    :color #ddd
 
   dt.active.hover
-    :color #fff
+    //:color #fff
 
   dd
-    :padding 15px
-    :background #fff
+    :padding 5px 10px 5px 10px
+    :background #323537
+    +linear-gradient(color-stops(#323537 41%, #2B2E31 83%))
     :border-left 0
+    :border-bottom 1px solid #262626
     :margin-right 3px
-
-//  .slide-number
-//    :color #68889b
-//    :left 10px
-//    :font-weight bold
-
-//  .active .slide-number
-//      :color black
-
-  a
-    :color #68889b
-
-  dd img
-    :float right
-    :margin 0 0 0 30px
-    :position relative
-    :top -20px
+    
+    a
+      :display block
