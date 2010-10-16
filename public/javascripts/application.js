@@ -42,12 +42,21 @@ jQuery(document).ready(function($) {
           }
         });
       });
-      this._$dom.find(".widget-head .actions").click(function() {
+      this._$dom.find(".widget-head .actions .settings a").click(function() {
         if (self.mode() == "edit") {
           self.setMode("normal");
         } else {
           self.setMode("edit");
         }
+        return false;
+      });
+      this._$dom.find(".widget-head .actions .remove a").click(function() {
+        $.ajax({
+          url: self._dashboard_data.widget_show_path.replace(":id", self._guid),
+          dataType: 'script',
+          type: "delete"
+        });
+        return false;
       });
 
       if (start_mode == 'new') {
@@ -87,6 +96,9 @@ jQuery(document).ready(function($) {
     setWidgetType: function(type) {
       this._widgetType = type;
       this._$dom.addClass(type);
+    },
+    remove: function() {
+      this._$dom.remove();
     }
   }
 

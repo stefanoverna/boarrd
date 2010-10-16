@@ -58,10 +58,30 @@
     :float right
     :margin-right 5px
     :margin-top 2px
-    img
-      :opacity 0.5
-      &:hover
-        :opacity 1
+    
+    ul
+      li
+        :float right
+        :margin-left 2px
+        
+        a
+          :display block
+          :width 18px
+          :height 18px
+          :text-indent -1000px
+          :background-repeat no-repeat
+          :background-position center center
+          
+          &:hover
+            :opacity 0.5
+            
+        &.remove a
+          :background-image url(/images/admin/quit.png)
+          
+          
+        &.settings a
+          :background-image url(/images/admin/gears.png)
+      
 
 .widget a
   :color #8BB698

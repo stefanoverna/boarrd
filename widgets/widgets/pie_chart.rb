@@ -32,13 +32,29 @@ module Widgets
         is_required
       end
 
+      setting :login do
+        label "Personal Login"
+        input :as => :string
+      end
+
+      setting :token do
+        label "Personal Token"
+        input :as => :string
+      end
+
       def refresh
         unless self.valid?
           raise ValidationError, self.errors
         end
 
-        open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/open").read)
-        closed_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/closed").read)
+        params = if self.token and self.login
+          params = "?login=#{self.login}&token=#{self.token}"
+        else
+          ""
+        end
+
+        open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/open#{params}").read)
+        closed_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/closed#{params}").read)
 
         open_slice = Slice.new
         open_slice.label = "Open Issues"

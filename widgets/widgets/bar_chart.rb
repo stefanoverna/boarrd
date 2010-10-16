@@ -10,15 +10,26 @@ module Widgets
         is_required
       end
 
+      setting :token do
+        label "Personal Token"
+        input :as => :string
+      end
+
       def refresh
         unless self.valid?
           raise ValidationError, self.errors
         end
 
-        project_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/repos/show/#{self.username}").read)
+        params = if self.token and self.login
+          params = "?login=#{self.username}&token=#{self.token}"
+        else
+          ""
+        end
+
+        project_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/repos/show/#{self.username}#{params}").read)
 
         self.slices = project_list["repositories"][0..4].map do |repo|
-          open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{repo["name"]}/open").read)
+          open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{repo["name"]}/open#{params}").read)
 
           open_slice = PieChart::Slice.new
           open_slice.label = repo["name"]
@@ -56,12 +67,28 @@ module Widgets
         is_required
       end
 
+      setting :login do
+        label "Personal Login"
+        input :as => :string
+      end
+
+      setting :token do
+        label "Personal Token"
+        input :as => :string
+      end
+
       def refresh
         unless self.valid?
           raise ValidationError, self.errors
         end
 
-        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}").read)
+        params = if self.token and self.login
+          params = "?login=#{self.login}&token=#{self.token}"
+        else
+          ""
+        end
+
+        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}#{params}").read)
 
         commits_per_user = {}
         commit_list["commits"].entries.each do |commit|
