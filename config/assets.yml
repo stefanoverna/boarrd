@@ -13,4 +13,8 @@ javascripts:
   - public/javascripts/jquery.rails.js
   - public/javascripts/jquery.metadata.js
   - public/javascripts/jquery.easyAccordion.js
+  - public/javascripts/js-class.js
+  - public/javascripts/bluff-src.js
+  - public/javascripts/excanvas.js
+  - public/javascripts/dump.js
   - public/javascripts/application.js

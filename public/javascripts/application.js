@@ -72,6 +72,12 @@ jQuery(document).ready(function($) {
     guid: function() {
       return this._guid;
     },
+    setWidgetTitle: function(title) {
+      this._$dom.find(".widget-head .title").text(title);
+    },
+    setInputTitle: function(title) {
+      this._$dom.find(".type-bar").text(title);
+    },
     setWidgetContent: function(dom) {
       this._$dom.find(".normal-mode").empty().append(dom);
     },
