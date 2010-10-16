@@ -23,4 +23,8 @@ class Widget < ActiveRecord::Base
     widget_type.gsub /-/, "_"
   end
 
+  def validate_widget_settings
+    input_class.new(settings).valid?
+  end
+
 end
