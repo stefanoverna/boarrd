@@ -1,12 +1,13 @@
 .news-cycle
   +widget-height-2
   +widget-rules
+  :padding 0 !important
     
 #news-cycle-ea
   :width 450px
   :height 220px
-  :background #fff
-  :border 1px solid #b5c9e8
+  :background #D5DFAB
+  :border 1px solid #D5DFAB
   :color black
 
   h2
@@ -17,42 +18,40 @@
 
   dt
     :height 25px
-    :line-height 24px
+    :line-height 25px
     :text-align right
-    :padding 0 15px 0 0
-    :font-size 1.1em
+    :padding 0 10px 0 0
     :font-weight bold
-    :font-family  Tahoma, Geneva, sans-serif
     :text-transform uppercase
     :letter-spacing 1px
-    :background #fff url(images/slide-title-inactive-2.jpg) 0 0 no-repeat
-    :color #26526c
+    :background #111
+    :color #8BB698
+    :border-bottom 1px solid #587062
     
   dt.active
     :cursor pointer
-    :color black
-    :background #fff url(images/slide-title-active-2.jpg) 0 0 no-repeat
+    :color white
+    :background #111
 
   dt.hover
-    :color #68889b
+    :color #587062
 
   dt.active.hover
     :color #fff
 
   dd
-    :padding 25px
-    :background #fff url(images/slide.jpg) bottom left repeat-x
-    :border 1px solid #dbe9ea
+    :padding 15px
+    :background #fff
     :border-left 0
     :margin-right 3px
 
-  .slide-number
-    :color #68889b
-    :left 10px
-    :font-weight bold
+//  .slide-number
+//    :color #68889b
+//    :left 10px
+//    :font-weight bold
 
-  .active .slide-number
-    :color black
+//  .active .slide-number
+//      :color black
 
   a
     :color #68889b
