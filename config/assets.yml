@@ -13,5 +13,5 @@ javascripts:
   - public/javascripts/jquery.rails.js
   - public/javascripts/jquery.metadata.js
   - public/javascripts/jquery.easyAccordion.js
-  - public/javascripts/jquery.li-scroller.js
+  - public/javascripts/jquery.innerfade.js
   - public/javascripts/application.js

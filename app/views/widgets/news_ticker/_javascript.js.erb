@@ -1,4 +1,10 @@
 $widget_content.each(function() {
   var $this = $(this);
- $(this, "ul#ticker01").liScroll(); 
+
+  $('#headline', this).innerfade({
+		speed: 1000,
+		timeout: 5000,
+		type: 'sequence'
+	});
+
 });

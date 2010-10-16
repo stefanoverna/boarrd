@@ -1,6 +1,4 @@
-%ul.navigation{:id=>"ticker01"}
-- @widget_data.items.each do |item|
-  %li 
-    %span= item.published_at.to_s
-    =link_to item.title, "#"
-
+.trigger
+  #headline
+    - @widget_data.items.each do |item|
+      %span.item=link_to item.primary_text, item.link 
