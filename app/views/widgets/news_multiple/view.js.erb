@@ -1,10 +1,10 @@
-var $widget-content = $("<%= raw escape_javascript( render :partial => "widgets/news_multiple/view" )%>");
+var $widget_content = $("<%= raw escape_javascript( render :partial => "widgets/news_multiple/view" )%>");
 widget = widget("<%= @widget.guid %>");
 widget.setWidgetType("<%= @widget_slug %>")
-widget.setContent($widget-content);
+widget.setContent($widget_content);
 widget.setMode("normal");
 
-$widget-content.each(function() {
+$widget_content.each(function() {
   var $this = $(this);
   alert($this.find("h1").length);
 });
