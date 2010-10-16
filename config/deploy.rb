@@ -30,16 +30,12 @@ namespace :deploy do
 
   task :update_db, :roles => :app do
     run "cd #{latest_release} && rake db:migrate RAILS_ENV=#{rails_env}"
-    run "cd #{latest_release} && rake tolk:sync RAILS_ENV=#{rails_env}"
-    run "cd #{latest_release} && rake tolk:dump_all RAILS_ENV=#{rails_env}"
   end
 
   task :reset_db, :roles => :app do
     run "cd #{latest_release} && rake db:drop RAILS_ENV=#{rails_env}"
     run "cd #{latest_release} && rake db:create RAILS_ENV=#{rails_env}"
     run "cd #{latest_release} && rake db:migrate RAILS_ENV=#{rails_env}"
-    run "cd #{latest_release} && rake tolk:sync RAILS_ENV=#{rails_env}"
-    run "cd #{latest_release} && rake tolk:import RAILS_ENV=#{rails_env}"
   end
 
   task :finalize, :roles => :app do
