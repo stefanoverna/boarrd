@@ -3,6 +3,10 @@ module Widgets
     include ROXML
     include Validatable
 
+    class << self
+      attr_accessor :title, :slug
+    end
+
     def initialize(params = {})
       update params
     end

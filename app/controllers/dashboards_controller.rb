@@ -11,6 +11,7 @@ class DashboardsController < ApplicationController
   actions :index, :show, :new, :create, :destroy
 
   def create
+    @dashboard = Dashboard.new(params[:dashboard])
     @dashboard.user = current_user
     create!
   end

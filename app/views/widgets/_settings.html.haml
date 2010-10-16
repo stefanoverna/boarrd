@@ -1,0 +1,4 @@
+= simple_form_for :widget_input_settings do |f|
+  - @widget.input_class.settings.each do |setting|
+    = f.input setting.config.name, setting.config.input
+  = f.button :submit

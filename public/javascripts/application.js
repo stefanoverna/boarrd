@@ -42,17 +42,31 @@ jQuery(document).ready(function($) {
           }
         });
       });
+      this._$dom.find(".widget-head .actions").click(function() {
+        if (self.mode() == "edit") {
+          self.setMode("normal");
+        } else {
+          self.setMode("edit");
+        }
+      });
       this.setMode('new');
     },
     setMode: function(mode) {
       this._$dom.find(".widget-content .mode").hide();
       this._$dom.find(".widget-content .mode."+mode+"-mode").show();
+      this._mode = mode;
+    },
+    mode: function() {
+      return this._mode;
     },
     guid: function() {
       return this._guid;
     },
-    setContent: function(dom) {
+    setWidgetContent: function(dom) {
       this._$dom.find(".normal-mode").empty().append(dom);
+    },
+    setWidgetSettings: function(dom) {
+      this._$dom.find(".edit-mode").empty().append(dom);
     },
     setWidgetType: function(type) {
       this._widgetType = type;

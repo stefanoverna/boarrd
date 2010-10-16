@@ -6,5 +6,7 @@ class Dashboard < ActiveRecord::Base
   validates_presence_of :title
   normalize_attributes :title
 
+  has_friendly_id :title, :use_slug => true
+
   set_ui_editable_associations
 end

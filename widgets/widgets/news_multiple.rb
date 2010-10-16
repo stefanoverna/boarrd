@@ -1,19 +1,10 @@
 module Widgets
-  module NewsMultiple
+  class NewsMultiple < BaseWidget
 
-    def self.available_inputs
-      [
-        Widgets::NewsTicker::FeedInput
-      ]
-    end
-
-    def self.slug
-      "news_multiple"
-    end
-
-    def self.title
-      "Multiple News Widget"
-    end
+    self.inputs = [ Widgets::NewsTicker::FeedInput ]
+    self.slug = :news_multiple
+    self.title = "Multiple News Widget"
 
   end
+
 end
