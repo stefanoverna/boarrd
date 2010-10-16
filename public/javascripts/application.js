@@ -39,6 +39,10 @@ jQuery(document).ready(function($) {
     },
     setContent: function(dom) {
       this._$dom.find(".normal-mode").empty().append(dom);
+    },
+    setWidgetType: function(type) {
+      this._widgetType = type;
+      this._$dom.addClass(type);
     }
   }
 

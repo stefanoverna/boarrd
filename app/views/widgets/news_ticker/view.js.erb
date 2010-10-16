@@ -1,1 +1,3 @@
-widget("<%= @widget.guid %>").setContent("<%= raw escape_javascript( render :partial => "widgets/news_ticker/view" )%>");
+widget = widget("<%= @widget.guid %>");
+widget.setWidgetType("<%= @widget_slug %>")
+widget.setContent("<%= raw escape_javascript( render :partial => "widgets/news_ticker/view" )%>");
