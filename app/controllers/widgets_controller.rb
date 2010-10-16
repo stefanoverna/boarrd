@@ -33,7 +33,7 @@ class WidgetsController < ApplicationController
     @widget = Widget.find(params[:id])
     @widget.settings = params[:widget_settings]
 
-    if @widget.validate_widget_settings and @widget.save
+    if @widget.save
       render :template => "widgets/view"
     else
       render :template => "widgets/errors"

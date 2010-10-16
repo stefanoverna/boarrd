@@ -21,6 +21,7 @@ module Widgets
   end
 
   def self.find_by_slug(slug)
+    return nil if slug.nil?
     widget_module = self.available_widgets.find do |widget|
       widget.slug == slug.to_sym
     end

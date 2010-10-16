@@ -1,8 +1,12 @@
 var $widget_content = $("<%= raw escape_javascript( render :partial => "widgets/#{@widget.dashed_widget_type}/content" )%>");
 var $widget_settings = $("<%= raw escape_javascript( render :partial => "widgets/settings" )%>");
+<%- @widget.input_class.settings.each do |s| %>
+$widget_settings.find("#widget_settings_<%= s.config.name %>").val("<%= raw escape_javascript(@widget.settings[s.config.name]) %>")
+<%- end %>
 widgetObj = widget("<%= @widget.guid %>");
 widgetObj.setWidgetType("<%= @widget_slug %>")
 widgetObj.setWidgetContent($widget_content);
 widgetObj.setWidgetSettings($widget_settings);
+widgetObj.setMode("normal");
 
 <%= render :partial => "widgets/#{@widget.dashed_widget_type}/javascript" %>
