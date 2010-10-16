@@ -3,10 +3,10 @@ require 'active_support/concern'
 require 'validatable'
 require 'roxml'
 
-require File.join(File.expand_path(File.dirname(__FILE__)), "widget", "input")
-require File.join(File.expand_path(File.dirname(__FILE__)), "widget", "configurable")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "input")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "configurable")
 
-require File.join(File.expand_path(File.dirname(__FILE__)), "widget", "news_ticker")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_ticker")
 
 module Widgets
 

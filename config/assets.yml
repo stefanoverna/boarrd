@@ -11,4 +11,5 @@ javascripts:
   - public/javascripts/jquery.js
   - public/javascripts/jquery.ui.js
   - public/javascripts/jquery.rails.js
+  - public/javascripts/jquery.metadata.js
   - public/javascripts/application.js
