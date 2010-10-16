@@ -2,8 +2,31 @@
   :width 960px
   :margin 0px auto
   
+  .widget-template *
+    :display none
+  
   .column
     :width 460px
     :margin 0px 10px
-    :background-color red
     :float left
+    
+    .widget
+      :margin-bottom 10px
+      
+      .widget-header
+        :height 20px
+        :line-height 20px
+        :background-color green
+        +clearfix
+        
+        .title
+          :float left
+          :width 100px
+          
+        .actions
+          :float right
+          :width 100px
+        
+      .widget-content
+        :height 100px
+        :background-color yellow

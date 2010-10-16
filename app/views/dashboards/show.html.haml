@@ -1,12 +1,26 @@
 .dashboard
-  .column
-    .widget.news_ticker
-    .widget.news_cycle
-    .widget.news_multiple
-  .column
-    .widget
-    .widget
-    .widget
-    
+  .column#area1
+    .add-new-widget
+      = submit_tag "Add a new Widget..."
+  .column#area2
+    .add-new-widget
+      = submit_tag "Add a new Widget..."
+  
   %script{:type => "text/json"}
     != @dashboard_settings.to_json
+  
+  .widget-template
+    .widget
+      .widget-header
+        .title
+        .actions
+      .widget-content
+        .mode.new-mode
+          = simple_form_for [@dashboard, Widget.new], :remote => true do |f|
+            = f.input :widget_type, :collection => @available_widgets, :label_method => :title, :value_method => :name
+            = f.hidden_field :area
+            = f.hidden_field :guid
+            = f.button :submit
+        .mode.edit-mode
+        .mode.normal-mode
+        

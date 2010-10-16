@@ -5,5 +5,5 @@ class Widget < ActiveRecord::Base
   validates_presence_of :widget_type
   validates_presence_of :area
   validates_presence_of :area_position
-
+  validates_presence_of :guid
 end
