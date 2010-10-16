@@ -18,6 +18,7 @@
           %img{:src => "/images/admin/quit.png", :alt => "Delete widget"}
           %img{:src => "/images/admin/gears.png", :alt => "Settings"}
       .widget-content
+        .type-bar Feed
         .mode.new-mode
           = simple_form_for [@dashboard, Widget.new], :remote => true do |f|
             = f.input :widget_type, :collection => @available_widgets, :label_method => :title, :value_method => :slug

@@ -18,15 +18,28 @@
   :margin-bottom 10px
   +border-radius(5px)
   +linear-gradient(color-stops(#323537, #2B2E31))
+  :position relative
   
+  .type-bar
+    :position absolute
+    :bottom 0px
+    :right 20px
+    :background-color red
+    :width 80px
+    :height 24px
+    :line-height 24px
+    :text-align center
+    +border-top-radius(5px)
+    +box-shadow(#212121, 0px, -2px, 2px)
+    +linear-gradient(color-stops(#C22222, #931B1C))
+    
 .widget-content 
-  //:padding 13px
   
 .widget-head 
   :background #323537
   +linear-gradient(color-stops(#323537 48%, #2B2E31 49%))
   :font-size 16px 
-  :color #17191A
+  :color #C6C6C6
   :text-align left
   :padding 5px 5px 5px 10px
   :border-top 1px solid #44494D

@@ -4,8 +4,10 @@ module Widgets
     class NewsItem
       include ROXML
 
-      xml_accessor :title
-      xml_accessor :published_at, :as => Time
+      xml_accessor :primary_text
+      xml_accessor :secondary_text
+      xml_accessor :optional_text
+      xml_accessor :link
     end
 
     class Input < Widgets::Input
@@ -47,10 +49,11 @@ module Widgets
         issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/#{self.status}").read)
 
         self.items = []
-        issue_list["issues"].entries[0..3].each do |issue|
+        issue_list["issues"].entries[0..6].each do |issue|
           item = NewsItem.new
-          item.title = issue["title"]
-          item.published_at = issue["updated_at"]
+          item.primary_text = issue["title"]
+          item.optional_text = "by %s" % issue["user"]
+          item.secondary_text = issue["body"]
           self.items << item
         end
 
@@ -80,10 +83,10 @@ module Widgets
         cal = cals.first
 
         self.items = []
-        cal.events.sort_by(&:dtstart).delete_if{ |event| event.dtend < Date.today }[0..3].each do |event|
+        cal.events.sort_by(&:dtstart).delete_if{ |event| event.dtend < Date.today }[0..9].each do |event|
           item = NewsItem.new
-          item.title = event.summary
-          item.published_at = event.dtstart
+          item.primary_text = event.summary
+          item.optional_text = event.dtstart
           self.items << item
         end
 
@@ -106,24 +109,17 @@ module Widgets
         has_format :with => URI::regexp(["http", "https"])
       end
 
-      setting :items_count do
-        input :as => :select, :collection => 1..20
-        label "The number of items to visualize"
-        default_value 5
-        is_required
-        is_numerical :only_integer => true
-      end
-
       def refresh
         unless self.valid?
           raise ValidationError, self.errors
         end
         feed = FeedNormalizer::FeedNormalizer.parse open(self.url)
         self.items = []
-        feed.entries[0..self.items_count.to_i].each do |entry|
+        feed.entries[0..6].each do |entry|
           item = NewsItem.new
-          item.title = entry.title
-          item.published_at = entry.date_published
+          item.primary_text = entry.title
+          item.secondary_text = entry.content
+          item.optional_text = entry.date_published
           self.items << item
         end
       end

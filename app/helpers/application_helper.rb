@@ -21,4 +21,12 @@ module ApplicationHelper
     block_to_partial('common/message', options.merge!(:type => type.to_s), &block)
   end
 
+  def snippet(thought, wordcount = 6)
+    thought.split[0..(wordcount-1)].join(" ") +(thought.split.size > wordcount ? "..." : "")
+  end
+
+  def sanitize(text)
+    Sanitize.clean(text, :elements => [])
+  end
+
 end

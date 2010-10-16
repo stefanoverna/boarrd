@@ -1,12 +1,13 @@
-- @widget_data.items.each do |item|
-  %div
-    %span= item.published_at.to_s
-    %h1= item.title
-    %p
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in risus tortor. Donec convallis dictum leo. Nam sed felis nec odio tincidunt suscipit vitae non tortor. Fusce posuere, tellus vel tempor facilisis, justo ipsum tempus ligula, at tristique risus lectus ac nibh. Etiam dui magna, dapibus eu cursus eu, eleifend sed neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer vitae mauris purus. Vestibulum ut est vitae felis tempor imperdiet et id elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris consectetur euismod ligula eu ullamcorper. Aliquam ut nibh in tellus ultrices euismod eget in nibh. Donec porta tellus vitae nulla accumsan placerat. Suspendisse nec bibendum sem. Aliquam erat volutpat. Suspendisse fermentum imperdiet dolor convallis mattis. Phasellus quis urna sapien, viverra rhoncus diam. Pellentesque eget dui dui, et pharetra neque. Sed venenatis aliquam faucibus.
-      Etiam vitae nibh eget justo mollis dapibus. Donec pulvinar mi justo, ac vulputate ligula. Morbi aliquam velit non lorem faucibus fermentum. Sed egestas pulvinar euismod. Phasellus bibendum sapien id felis aliquet eu vehicula tortor adipiscing. Quisque sed lacus vitae purus luctus fermentum. Proin eget massa et mi adipiscing pretium. Fusce commodo faucibus libero, nec scelerisque libero viverra vel. Nam egestas vulputate risus, eget adipiscing tellus aliquet non. Nam neque justo, dictum ac tempus nec, tempus ut ante. Vivamus euismod, mauris ac egestas gravida, velit dolor congue augue, et semper nibh sem pharetra mi. Curabitur a urna sapien, et egestas mi. Nunc facilisis est eu nisl convallis porttitor. 
-  
-    
-    
-    
-    
+%ul.items
+  - @widget_data.items.each do |item|
+    %li
+      .header
+        %h3.primary_text= link_to item.primary_text, item.link
+        - if item.optional_text
+          %span.optional_text
+            - if !item.optional_text.is_a? String
+              = time_ago_in_words(item.optional_text) + " ago"
+            - else
+              = item.optional_text
+      - if item.secondary_text
+        %p.secondary_text= snippet(sanitize(item.secondary_text), 30)
