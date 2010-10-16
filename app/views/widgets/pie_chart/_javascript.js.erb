@@ -1,0 +1,26 @@
+$widget_content.each(function() {
+  try {
+    var $this = $(this);
+    var data = $this.metadata({type: "html5", name: "data-chart"});
+
+    var g = new Bluff.Pie($this.find("canvas")[0], "460x400");
+
+    g.set_theme({
+        colors: ['#5C5C5C', '#BEBEBE', '#727272', '#464646', '#E5E5E5'],
+        marker_color: '#373636',
+        font_color: 'white',
+        background_colors: ['rgba(0,0,0,0)', 'rgba(0,0,0,0)']
+    });
+
+    $.each(data.chart, function() {
+      g.data(this.label, this.values);
+    });
+
+    g.hide_legend = false;
+    g.hide_title = true;
+    g.draw();
+
+  } catch(e) {
+    alert(e);
+  }
+});
