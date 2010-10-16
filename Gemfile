@@ -19,6 +19,7 @@ gem "friendly_id", "~> 3.1"
 gem "paperclip"
 gem "roxml"
 gem "jammit", :git => "http://github.com/documentcloud/jammit.git"
+gem "feed-normalizer"
 
 group :development do
   gem "rails-erd"

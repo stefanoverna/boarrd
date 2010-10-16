@@ -1,2 +1,3 @@
-%h1 News Multiple Widget!
-%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus accumsan vulputate. Quisque dui lorem, cursus a bibendum non, sollicitudin eget nisl. Nullam porttitor arcu dictum dolor porttitor pulvinar. Donec viverra mattis pretium. Quisque a mauris tortor. Phasellus quis lacus id urna eleifend ultricies et sed tortor. Vivamus nisl arcu, porttitor ut placerat in, molestie at arcu.
+- @widget_data.items.each do |item|
+  %h1= item.title
+  %p= item.published_at.to_s

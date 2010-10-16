@@ -24,15 +24,15 @@ class Widget < ActiveRecord::Base
     widget_type.gsub /-/, "_"
   end
 
-  def valid?(context = nil)
-    if input_class.nil?
-      super
-    else
-      super and input_class.new(settings).valid?
-    end
+  def all_valid?(context = nil)
+    valid? and input_class.new(settings).valid?
   end
 
-  def errors
+  def settings
+    super || {}
+  end
+
+  def all_errors
     if input_class.nil?
       super
     else
@@ -42,7 +42,9 @@ class Widget < ActiveRecord::Base
     end
   end
 
-  def settings_pseudo_model
-    WidgetSetting.new(settings.merge({:errors_on_attribute => errors, :errors_on_association => []}))
+  def widget_data
+    input = input_class.new(settings)
+    input.refresh
+    input
   end
 end
