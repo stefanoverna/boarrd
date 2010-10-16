@@ -27,23 +27,10 @@ jQuery(function ($) {
                 method            = el.attr('method') || el.attr('data-method') || 'GET',
                 url               = el.attr('action') || el.attr('href');
 
-            
+
             if (url === undefined) {
               throw "No URL specified for remote call (action or href must be present).";
             } else {
-                $.blockUI({ 
-                    message:  '<p>Please wait...</p>',
-                    css: { 
-                        border: 'none', 
-                        padding: '15px', 
-                        backgroundColor: 'rgba(0,0,0,0.8)', 
-                        '-webkit-border-radius': '5px', 
-                        '-moz-border-radius': '5px', 
-                        'font-weight': 'bold',
-                        color: '#fff' 
-                    }
-                });
-                
                 if (el.triggerAndReturn('ajax:before')) {
                     $.ajax({
                         url: url,
@@ -55,15 +42,12 @@ jQuery(function ($) {
                         },
                         success: function (data, status, xhr) {
                             el.trigger('ajax:success', [data, status, xhr]);
-                            $.unblockUI();
                         },
                         complete: function (xhr) {
                             el.trigger('ajax:complete', xhr);
-                            $.unblockUI();
                         },
                         error: function (xhr, status, error) {
                             el.trigger('ajax:failure', [xhr, status, error]);
-                            $.unblockUI();
                         }
                     });
                 }
