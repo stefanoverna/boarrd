@@ -3520,22 +3520,6 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
   margin-top: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  padding: 4px;
-  border: 2px solid white;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  padding: 4px;
-  border: 2px solid white;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
 }
 
 /* line 1, ../../../app/stylesheets/partials/widgets/_news_cycle.sass */
@@ -3544,14 +3528,6 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
   margin-top: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  padding: 4px;
-  border: 2px solid white;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
 }
 
 /* line 1, ../../../app/stylesheets/partials/widgets/_news_multiple.sass */
@@ -3560,12 +3536,4 @@ p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
   margin-top: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  padding: 4px;
-  border: 2px solid white;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
 }
