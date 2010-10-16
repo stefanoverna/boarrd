@@ -16,12 +16,12 @@ jQuery(document).ready(function($) {
     return null;
   }
 
-  function Widget(area, guid) {
-    this.init(area, guid);
+  function Widget(area, guid, start_mode) {
+    this.init(area, guid, start_mode);
   }
 
   Widget.prototype = {
-    init: function(area, guid) {
+    init: function(area, guid, start_mode) {
       var self = this;
       this._dashboard_data = $(".dashboard").metadata({type: "elem", name: "script"});
       this._guid = guid;
@@ -49,7 +49,16 @@ jQuery(document).ready(function($) {
           self.setMode("edit");
         }
       });
-      this.setMode('new');
+
+      if (start_mode == 'new') {
+        this.setMode('new');
+      } else {
+        $.ajax({
+          url: self._dashboard_data.widget_show_path.replace(":id", self._guid),
+          dataType: 'script'
+        });
+      }
+
     },
     setMode: function(mode) {
       this._$dom.find(".widget-content .mode").hide();
@@ -81,12 +90,17 @@ jQuery(document).ready(function($) {
 
     window.Widgets = [];
     // TODO: aggiungere i widget esistenti
+    $.each(data.dashboard_areas_widgets, function(area, guids) {
+      $.each(guids, function() {
+        window.widgets.push(new Widget(area, this, 'normal'));
+      });
+    });
 
     $dashboard.find(".column").each(function() {
       var $area = $(this);
       $area.find(".add-new-widget input").click(function() {
         var guid = GUID();
-        window.widgets.push(new Widget($area.attr("id"), guid));
+        window.widgets.push(new Widget($area.attr("id"), guid, 'new'));
       });
     });
 

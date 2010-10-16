@@ -21,7 +21,7 @@ class DashboardsController < ApplicationController
     areas = {}
     @dashboard.widgets.order("area, area_position").each do |widget|
       areas[widget.area] ||= []
-      areas[widget.area] << widget.id
+      areas[widget.area] << widget.guid
     end
 
     @available_widgets = Widgets::available_widgets
@@ -29,6 +29,7 @@ class DashboardsController < ApplicationController
     @dashboard_settings = {
       :dashboard_path => dashboard_path(@dashboard),
       :input_for_path => inputs_for_dashboards_path(:widget_type => ":widget_type"),
+      :widget_show_path => dashboard_widget_path(@dashboard, ":id"),
       :dashboard_areas_widgets => areas
     }
 
