@@ -1,3 +1,17 @@
+=widget-height-1
+  :height 100px
+=widget-height-2
+  :height 220px
+=widget-height-4
+  :height 460px
+=widget-height-8
+  :height 940px
+=widget-rules
+  //:margin-top 20px
+  //:margin-bottom 20px
+  :overflow hidden
+
+
 .widget-box
   :background #30322F
   :opacity 0.9
@@ -39,23 +53,21 @@
 .widget a 	 
   :color #8BB698
   
-#singleContentA div
+=single-content
   :background-color #587062
   :color #D5DFAB
   :font-size 12px
   :margin-bottom 10px
   :padding 5px
   :position relative
+  
+.single-content-odd
+  +single-content
   +border-corner-radius(top,left,5px)
-  +border-corner-radius(bottom,right,5px)
+  +border-corner-radius(bottom,right,5px)  
 
-#singleContentB div
-  :background-color #587062
-  :color #D5DFAB
-  :font-size 12px
-  :margin-bottom 10px
-  :padding 5px
-  :position relative
+.single-content-even
+  +single-content
   +border-corner-radius(top,right,5px)
   +border-corner-radius(bottom,left,5px)
   
