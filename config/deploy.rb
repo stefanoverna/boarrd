@@ -40,6 +40,7 @@ namespace :deploy do
 
   task :finalize, :roles => :app do
     run "cd #{latest_release} && rake tmp:clear"
+    run "cd #{latest_release} && touch tmp/restart.txt"
     #run "cd #{latest_release} && bundle exec whenever --update-crontab #{application} --set cron_log=#{shared_dir}/log/cron.log"
   end
 end
