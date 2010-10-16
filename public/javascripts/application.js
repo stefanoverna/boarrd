@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
     init: function(area, guid) {
       this._guid = guid;
       this._area = area;
-      this._$dom = $(".dashboard .widget-template > .widget").clone();
+      this._$dom = $(".dashboard .widget-template > .widget-box").clone();
       this._$dom.insertBefore("#"+area+" .add-new-widget");
       this._$dom.find(".new-mode #widget_area").val(area);
       this._$dom.find(".new-mode #widget_guid").val(guid);
@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 
   $(".dashboard").each(function() {
     var $dashboard = $(this);
-    var $widget_template = $dashboard.find(".widget-template > .widget");
+    var $widget_template = $dashboard.find(".widget-template > .widget-box");
     var data = $dashboard.metadata({type: "elem", name: "script"});
 
     window.Widgets = [];
