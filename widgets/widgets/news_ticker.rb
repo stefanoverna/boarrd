@@ -49,7 +49,7 @@ module Widgets
         issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/#{self.status}").read)
 
         self.items = []
-        issue_list["issues"].entries[0..6].each do |issue|
+        issue_list["issues"].entries[0..5].each do |issue|
           item = NewsItem.new
           item.primary_text = issue["title"]
           item.optional_text = "by %s" % issue["user"]
@@ -61,6 +61,51 @@ module Widgets
 
       self.title = "Github Issues"
       self.slug = :"github-issues"
+
+    end
+    
+    class GithubCommits < Input
+      include Widgets::Configurable
+
+      setting :username do
+        label "Github User"
+        input :as => :string
+        is_required
+      end
+
+      setting :repository do
+        label "Repository"
+        input :as => :string
+        is_required
+      end
+
+      setting :branch do
+        label "Branch"
+        input :as => :string
+        is_required
+      end
+
+      def refresh
+        unless self.valid?
+          raise ValidationError, self.errors
+        end
+
+        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}").read)
+
+        self.items = []
+        commit_list["commits"].entries[0..5].each do |commit|
+          item = NewsItem.new
+          item.primary_text = commit["id"]
+          item.secondary_text = "By " + commit["committer"]["name"]
+          item.optional_text = Date.parse(commit["committed_date"])
+          item.link = commit["url"]
+          self.items << item
+        end
+
+      end
+
+      self.title = "Github Commits"
+      self.slug = :"github-commits"
 
     end
 
@@ -120,6 +165,7 @@ module Widgets
           item.primary_text = entry.title
           item.secondary_text = entry.content
           item.optional_text = entry.date_published
+          item.link = entry.url
           self.items << item
         end
       end
@@ -129,7 +175,7 @@ module Widgets
 
     end
 
-    self.inputs = [ Widgets::NewsTicker::FeedInput, Widgets::NewsTicker::GithubIssues, Widgets::NewsTicker::CalendarEvents ]
+    self.inputs = [ Widgets::NewsTicker::FeedInput, Widgets::NewsTicker::CalendarEvents ]
     self.slug = :"news-ticker"
     self.title = "NewsTicker Widget"
 
