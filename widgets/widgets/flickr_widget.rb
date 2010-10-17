@@ -57,7 +57,7 @@ module Widgets
           photos[0..9].each do |photo|
             item = FlickrItem.new
             
-            item.image = "http://farm" + photo['farm'] + ".static.flickr.com/" + photo['server'] + "/" + photo['id'] + "_" + photo['secret'] + "_s.jpg"
+            item.image = "http://farm" + photo['farm'] + ".static.flickr.com/" + photo['server'] + "/" + photo['id'] + "_" + photo['secret'] + ".jpg"
             item.link = photo.url
             item.title = photo.title
 
