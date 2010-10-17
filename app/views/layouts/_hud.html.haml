@@ -1,7 +1,13 @@
-- if current_user
-  .menu-hud
-    %div{:class => controller_name.to_sym == :dashboards ? "wrapper" : "tiny-wrapper"}
-      %ul
+.menu-hud
+  %div.wrapper
+    %ul
+      - if !user_signed_in?
+        %li= link_to "Login!", new_user_session_path
+        %li or
+        %li= link_to "Sign up now!", new_user_registration_path
+        %li
+          Welcome, stranger! Are ye registered?
+      - else
         %li= link_to "Log out", destroy_user_session_path
         %li
           Logged in as

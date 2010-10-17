@@ -1,0 +1,19 @@
+= simple_form_for @dashboard do |f|
+
+  = block :block_class => "small login center" do
+    = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize] do
+      = yield :actions
+    = block_content do
+      = render :partial => 'layouts/flashes'
+
+      - if @dashboard.errors.any?
+        = message :alert do
+          = @dashboard.errors.full_messages.join(", ")
+    
+      - Dashboard.ui_editable_attributes.each do |a|
+        = f.input a, Dashboard.simple_form_options_for(a).merge!({:binding => controller})
+    
+      - Dashboard.ui_editable_associations.each do |a|
+        = f.association a, Dashboard.simple_form_options_for(a).merge!({:binding => controller})
+
+  = f.button :submit, :class => "full-width-button"

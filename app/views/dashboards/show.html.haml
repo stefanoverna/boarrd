@@ -1,4 +1,4 @@
-.dashboard
+#dashboard
   %h1.dashboard-title= @dashboard.title
   .column#area1
     .add-new-widget
@@ -27,7 +27,7 @@
         .type-bar
         .mode.new-mode
           = simple_form_for [@dashboard, Widget.new], :remote => true do |f|
-            = f.input :widget_type, :collection => @available_widgets, :label_method => :title, :value_method => :slug
+            = f.input :widget_type, :@dashboards => @available_widgets, :label_method => :title, :value_method => :slug
             = f.hidden_field :area
             = f.hidden_field :guid
             = f.button :submit

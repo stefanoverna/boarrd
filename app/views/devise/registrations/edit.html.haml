@@ -1,16 +1,22 @@
-= render :partial => 'layouts/form_errors', :locals => {:resource => resource}
-
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = f.input :email
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :description
-  = f.input :birthday
-  = f.input :gender_male
-  = f.input :password
-  = f.input :password_confirmation
-  = f.input :current_password  
-  .input
-    = f.submit "Update"
+  
+  = block :block_class => "small login center" do
+    = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize] do
+      = yield :actions
+    = block_content do
+      = render :partial => 'layouts/flashes'
+      = render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+      
+      = f.input :email
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :description
+      = f.input :birthday
+      = f.input :gender_male
+      = f.input :password
+      = f.input :password_confirmation
+      = f.input :current_password  
+
+  = f.submit "Update", :class => "full-width-button"
 
 

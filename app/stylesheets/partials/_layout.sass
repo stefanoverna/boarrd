@@ -23,6 +23,9 @@ body
   :font-size 12px
   :line-height 20px
   
+  &.tiny .wrapper
+    :width 560px !important
+    
   .big-description
     :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
     :font-size 19px
@@ -31,6 +34,9 @@ body
     
     p
       :margin-bottom 15px
+      
+      &:last-child
+        :margin-bottom 0px
       
   a
     :color #008ee8
@@ -45,7 +51,7 @@ body
     :line-height 70px
     :text-align center
     :margin-bottom 0px
-    :margin-top 60px
+    :margin-top 20px
     :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
     :color #999
     +text-shadow(black, 0px, 5px, 2px)
@@ -101,10 +107,6 @@ body
             &:hover
               :color #ccc
     
-    .tiny-wrapper
-      :margin 0 auto
-      :width 560px
-      
     .wrapper
       :margin 0 auto
       :width 960px
