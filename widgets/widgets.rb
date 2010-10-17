@@ -32,6 +32,7 @@ module Widgets
   end
 
   def self.available_inputs_widgets_slugs
+
     inputs_hash = Widgets.available_widgets.inject({}) do |result, widget|
       widget.available_inputs.inject(result) do |r, input|
         r[input.name] ||= []

@@ -8,6 +8,10 @@
     .column-inner
     .add-new-widget
       = submit_tag "Add a new Widget...", :class => "full-width-button"
+  .column#area3
+    .column-inner
+    .add-new-widget
+      = submit_tag "Add a new Widget...", :class => "full-width-button"
  
   %script{:type => "text/json"}
     != @dashboard_settings.to_json
@@ -29,6 +33,7 @@
         .type-bar
         .hidden
           .mode.new-mode
+            %h3
             = simple_form_for [@dashboard, Widget.new], :remote => true do |f|
               .input
                 = f.label :widget_input_types, "Select your Widget:", :class => "required"

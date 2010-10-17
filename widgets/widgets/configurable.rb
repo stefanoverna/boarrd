@@ -19,7 +19,6 @@ module Widgets
             setting.config.required = true
           end
         end
-
       end
 
       def settings
