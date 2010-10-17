@@ -15,7 +15,11 @@ module Widgets
         attr_accessor name
         setting.validations.each do |validation|
           self.send validation[:name], *validation[:args]
+          if validation[:name] == :validates_presence_of
+            setting.config.required = true
+          end
         end
+
       end
 
       def settings

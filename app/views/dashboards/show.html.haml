@@ -30,7 +30,9 @@
         .hidden
           .mode.new-mode
             = simple_form_for [@dashboard, Widget.new], :remote => true do |f|
-              = f.grouped_collection_select :widget_input_types, @available_inputs_widgets_slugs, :widgets, :label, :value, :label
+              .input
+                = f.label :widget_input_types, "Select your Widget:", :class => "required"
+                = f.grouped_collection_select :widget_input_types, @available_inputs_widgets_slugs, :widgets, :label, :value, :label, :class => "required"
               = f.hidden_field :area
               = f.hidden_field :guid
               = f.button :submit

@@ -79,6 +79,7 @@ jQuery(document).ready(function($) {
     },
     setWidgetSettings: function(dom) {
       this._$dom.find(".edit-mode").empty().append(dom);
+      this._$dom.find(".edit-mode button, .edit-mode input:submit").button();
     },
     setWidgetType: function(type) {
       this._widgetType = type;
@@ -95,6 +96,9 @@ jQuery(document).ready(function($) {
   $("#dashboard").each(function() {
     var $dashboard = $(this);
     var $widget_template = $dashboard.find(".widget-template > .widget-box");
+
+    $widget_template.find(".new-mode button, .new-mode input:submit").button();
+
     var data = $dashboard.metadata({type: "elem", name: "script"});
 
     window.Widgets = [];
@@ -124,6 +128,7 @@ jQuery(document).ready(function($) {
       connectWith: ".column .column-inner",
       placeholder: 'widget-ghost',
       handle: '.widget-head',
+      delay: 500,
       opacity: 0.7,
       revert: true,
       start: function(event, ui) {
