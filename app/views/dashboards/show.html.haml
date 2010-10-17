@@ -1,17 +1,11 @@
-#dashboard
+- cols_count = @dashboard.columns_count || 2
+#dashboard{:class => "cols-%d" % cols_count}
   %h1.dashboard-title= @dashboard.title
-  .column#area1
-    .column-inner
-    .add-new-widget
-      = submit_tag "Add a new Widget...", :class => "full-width-button"
-  .column#area2
-    .column-inner
-    .add-new-widget
-      = submit_tag "Add a new Widget...", :class => "full-width-button"
-  .column#area3
-    .column-inner
-    .add-new-widget
-      = submit_tag "Add a new Widget...", :class => "full-width-button"
+  - 1.upto(cols_count).each do |i|
+    .column{:id => "area%d" % i}
+      .column-inner
+      .add-new-widget
+        = submit_tag "Add a new Widget...", :class => "full-width-button"
  
   %script{:type => "text/json"}
     != @dashboard_settings.to_json
@@ -33,7 +27,6 @@
         .type-bar
         .hidden
           .mode.new-mode
-            %h3
             = simple_form_for [@dashboard, Widget.new], :remote => true do |f|
               .input
                 = f.label :widget_input_types, "Select your Widget:", :class => "required"
