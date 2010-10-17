@@ -1,11 +1,11 @@
 require 'widgets'
-require 'ostruct'
 
 class Widget < ActiveRecord::Base
   belongs_to :dashboard
   serialize :settings, Hash
 
   validates_presence_of :widget_type
+  validates_presence_of :input_type
   validates_presence_of :area
   validates_presence_of :area_position
   validates_presence_of :guid
@@ -43,6 +43,7 @@ class Widget < ActiveRecord::Base
   end
 
   def widget_data
+    return nil if input_class.nil?
     request = CacheRequest.find_by_key(cache_key)
     if request.nil? or request.updated_at < 5.minutes.ago
       input = input_class.new(settings)
