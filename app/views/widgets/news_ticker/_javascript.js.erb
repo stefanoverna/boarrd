@@ -6,5 +6,16 @@ $widget_content.each(function() {
     timeout: 30000,
     type: 'sequence'
   });
+  
+  $($this).hover(
+    function() {
+      $(".type-bar", $this.parent().parent()).css("z-index", "0");
+      $("span.popup", $this).css("display", "block");
+    },
+    function() {
+      $("span.popup", $this).css("display", "none");
+      $(".type-bar", $this.parent().parent()).css("z-index", "30");
+    }
+  );
 
 });

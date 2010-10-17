@@ -3,22 +3,40 @@
   :text-align left
   
   .widget-content
+  
+    .normal-mode
 
-    .item
-      :padding 14px 17px
-      
-      h2
-        :line-height 21px
-        :height 23px
-        :overflow hidden
-        +text-shadow(0px, -1px, 0px, #171717)
-      
-      .details
-        :font-size 11px
-        :color #ABABAB
-        :text-align justify
-        :max-height 26px
-        :line-height 13px
-        :overflow hidden
-        :margin-top 3px
-        :overflow hidden
+      .item
+        :padding 14px 17px
+        
+        h2
+          :line-height 21px
+          :height 23px
+          :overflow hidden
+          +text-shadow(0px, -1px, 0px, #171717)
+          :padding-bottom 3px
+        
+        .details
+          :font-size 11px
+          :color #ABABAB
+          :text-align justify
+          :max-height 13px
+          :line-height 13px
+          :overflow hidden
+          :margin-top 3px
+          :overflow hidden
+          
+        .popup
+          :display none          
+          :position relative
+          :overflow hidden
+          :min-width 300px
+          :height 86px
+          :left -17px
+          :top -88px
+          :padding 5px
+          :background #323537
+          +linear-gradient(color-stops(#323537, #2B2E31))
+          :border 2px solid white
+          +border-radius(5px)
+          :z-index 31
