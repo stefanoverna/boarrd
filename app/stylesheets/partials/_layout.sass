@@ -128,26 +128,35 @@ body
       :padding-bottom 150px
 
   #footer
-    :position relative
-    :margin-top -150px
-    :height 100px
-    :clear both
-    
     :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
-    :font-size 20px
+    :font-size 15px
     :background rgba(0,0,0,0.4)
     :color #aaa
-    :padding 30px
+    :padding 20px
     :padding-top 20px
     :text-align center
-    //:height 80px
+    :position relative
+    :margin-top -100px
+    :height 60px
+    :clear both
+    :font-weight normal
+    
+    span.arr
+      :color white
+    
+    a
+      :font-weight normal
     
     p
       :line-height 190%
       
-      span.bracket
-        :font-weight bold
-        :font-size 200%
-        :vertical-align middle
-        :margin 0 10px 0 10px
+      &.smaller
+        :font-size 13px
+        :color #777
+      
+        span.bracket
+          :font-weight bold
+          :font-size 200%
+          :vertical-align middle
+          :padding 0px 8px
         
