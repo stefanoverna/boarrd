@@ -30,6 +30,7 @@ class DashboardsController < ApplicationController
     @dashboard = Dashboard.new(params[:dashboard])
     @dashboard.user = current_user
     @dashboard.save
+    redirect_to dashboard_url(@dashboard)
   end
 
   def destroy
