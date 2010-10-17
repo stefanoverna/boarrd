@@ -1,10 +1,8 @@
-.trigger
-  #headline
-    - widget_data.items.each do |item|
-      %span.item
-        %h2
-          =link_to item.primary_text, item.link 
-        
+%div
+  - widget_data.items.each do |item|
+    .item
+      %h2= link_to item.primary_text, item.link 
+      %p.details
         - if !item.optional_text.is_a? String
           = time_ago_in_words(item.optional_text) + " ago"
         - else

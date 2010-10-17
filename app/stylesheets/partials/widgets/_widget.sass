@@ -8,10 +8,14 @@
   :height 460px
 =widget-height-8
   :height 940px
-=widget-rules
-  :margin-bottom 20px
-  :overflow hidden
 
+.widget-ghost
+  :background black
+  +border-radius(5px)
+  +widget-height-1
+  :margin-bottom 20px
+  +opacity(0.2)
+  
 .widget-box
   :background #30322F
   +box-shadow(black, 0px, 3px, 6px)
@@ -19,6 +23,8 @@
   +border-radius(5px)
   +linear-gradient(color-stops(#323537, #2B2E31))
   :position relative
+  :margin-bottom 20px
+  :overflow hidden
   
   .type-bar
     :position absolute

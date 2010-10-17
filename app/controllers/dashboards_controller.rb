@@ -33,6 +33,14 @@ class DashboardsController < ApplicationController
     redirect_to dashboard_url(@dashboard)
   end
 
+  def reorder_widgets
+    widgets = ActiveSupport::JSON.decode(params[:reordered_widgets])
+    widgets.each do |widget_settings|
+      Widget.find(widget_settings["guid"]).update_attributes({:area_position => widget_settings["area_position"], :area => widget_settings["area"]})
+    end
+    render :text => "true"
+  end
+
   def destroy
     @dashboard.destroy
     redirect_to dashboards_url
@@ -52,6 +60,7 @@ class DashboardsController < ApplicationController
       :dashboard_path => dashboard_path(@dashboard),
       :input_for_path => inputs_for_dashboards_path(:widget_type => ":widget_type"),
       :widget_show_path => dashboard_widget_path(@dashboard, ":id"),
+      :reorder_widgets_path => reorder_widgets_dashboard_path(@dashboard),
       :dashboard_areas_widgets => areas
     }
   end

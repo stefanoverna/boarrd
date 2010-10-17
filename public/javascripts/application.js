@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
 
       if (this._$dom) return;
 
-      this._$dom = $("#dashboard .widget-template > .widget-box").clone().insertBefore("#"+this._area+" .add-new-widget");
+      this._$dom = $("#dashboard .widget-template > .widget-box").clone().appendTo("#"+this._area+" .column-inner");
 
       // settings button
       this._$dom.find(".widget-head .actions .settings a").click(function() {
@@ -118,12 +118,41 @@ jQuery(document).ready(function($) {
 
     firstLoad();
 
-    $dashboard.find(".column").each(function() {
+    var $columns = $dashboard.find(".column .column-inner");
+
+    $columns.each(function() {
       var $area = $(this);
-      $area.find(".add-new-widget input").click(function() {
+      $area.parents(".column").find(".add-new-widget input").click(function() {
         var guid = GUID();
         window.widgets.push(new Widget($area.attr("id"), guid, true));
       });
+    });
+
+    $columns.sortable({
+      handle: '.widget-head',
+      connectWith: $columns,
+      placeholder: 'widget-ghost',
+      start: function(event, ui) {},
+      stop: function(event, ui) {
+
+        var params = []
+        $.each(window.widgets, function() {
+          var index = this._$dom.prevAll().length;
+          params.push({
+            area_position: index,
+            area: this._$dom.parents(".column").attr("id"),
+            guid: this.guid()
+          });
+        });
+
+        $.ajax({
+          url: data.reorder_widgets_path,
+          dataType: 'script',
+          type: "get",
+          data: {"reordered_widgets": JSON.stringify(params)}
+        });
+
+      }
     });
 
   });
