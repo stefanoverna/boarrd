@@ -19,5 +19,5 @@ javascripts:
   - public/javascripts/dump.js
   - public/javascripts/jquery.innerfade.js
   - public/javascripts/jquery.zweatherfeed.js
-  - public/javascripts/jquery.tzineClock.js
+  - public/javascripts/jquery.jclock.js
   - public/javascripts/application.js
