@@ -64,7 +64,7 @@
 				dataType: 'json',
 				success: function(data) {
 
-					if (data.query) {
+					if (data.query && data.query.results && data.query.results.channel) {
 			
 						if (data.query.results.channel.length > 0 ) {
 							
