@@ -80,6 +80,7 @@ class DashboardsController < ApplicationController
       :dashboard_path => dashboard_path(@dashboard),
       :widget_show_path => dashboard_widget_path(@dashboard, ":id"),
       :reorder_widgets_path => reorder_widgets_dashboard_path(@dashboard),
+      :editable => @dashboard.user == current_user,
       :dashboard_areas_widgets => areas
     }
   end
