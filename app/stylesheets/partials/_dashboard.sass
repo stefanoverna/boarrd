@@ -2,7 +2,22 @@
   :margin 0px auto
   :color white
   :text-align justify
+  :min-width 1200px
   +clearfix
+  
+  &.cols-3
+    :min-width 1200px
+    :max-width 1750px
+    
+    .column
+      :width 33%
+  
+  &.cols-2
+    :min-width 900px
+    :max-width 1200px
+    
+    .column
+      :width 50%
   
   .dashboard-title
     :font-size 40px
@@ -17,7 +32,6 @@
     :display none
   
   .column
-    :width 33%
     :float left
     
     .column-inner
