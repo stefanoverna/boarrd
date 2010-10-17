@@ -1,7 +1,8 @@
 .wrapper
   .welcome-block
     .left
-      = image_tag "/images/screenshot.png"
+      %a{:href => dashboard_url("welaika")}
+        = image_tag "/images/screenshot.png"
     .right
   
       %h1.boardd-logo 
