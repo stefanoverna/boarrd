@@ -62,10 +62,6 @@ jQuery(document).ready(function($) {
       if (start_mode == 'new') {
         this.setMode('new');
       } else {
-        $.ajax({
-          url: self._dashboard_data.widget_show_path.replace(":id", self._guid),
-          dataType: 'script'
-        });
         this.setMode('normal');
       }
 
@@ -114,6 +110,8 @@ jQuery(document).ready(function($) {
         window.widgets.push(new Widget(area, this, 'normal'));
       });
     });
+
+    firstLoad();
 
     $dashboard.find(".column").each(function() {
       var $area = $(this);

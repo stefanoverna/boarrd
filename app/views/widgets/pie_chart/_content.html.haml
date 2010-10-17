@@ -1,3 +1,3 @@
-.chart{:"data-chart" => @widget_data.slices.map{ |slice| { :label => slice.label, :values => [ slice.amount.to_f ] }}.to_json}
+.chart{:"data-chart" => widget_data.slices.map{ |slice| { :label => slice.label, :values => [ slice.amount.to_f ] }}.to_json}
   .canvas
     %canvas

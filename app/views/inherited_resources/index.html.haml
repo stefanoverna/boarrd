@@ -20,8 +20,10 @@
                   %span.empty= "Empty field"
                 
           %td
-            = link_to "Edit", edit_resource_url(r) if can? :update, r
-            = link_to "Destroy", resource_url(r), :confirm => 'Are you sure?', :method => :delete if can? :update, r
+            - if url = edit_resource_url(r) rescue false
+              = link_to "Edit", url if can? :update, r
+            - if url = resource_url(r, :method => :delete) rescue false
+              = link_to "Destroy", resource_url(r), :confirm => 'Are you sure?', :method => :delete if can? :update, r
             
 = content_for :actions do
   %ul

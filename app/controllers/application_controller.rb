@@ -39,13 +39,13 @@ class ApplicationController < ActionController::Base
 
         case action_name.to_sym
           when :new
-            "Create a new #{model_name}"
+            "Create a new #{model_name}!"
           when :edit
             "Edit #{model_name}"
           when :show
             "#{model_name} Details"
           when :index
-            "#{model_name.pluralize}"
+            "Your #{model_name.pluralize}"
         end
     end
   end

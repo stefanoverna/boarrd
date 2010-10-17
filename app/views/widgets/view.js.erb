@@ -1,18 +1,1 @@
-<% if @widget_data %>
-  var $widget_content = $("<%= raw escape_javascript( render :partial => "widgets/#{@widget.dashed_widget_type}/content" )%>");
-<% else %>
-  var $widget_content = $("<%= raw escape_javascript( render :partial => "widgets/settings_invalid" )%>");
-<% end %>
-var $widget_settings = $("<%= raw escape_javascript( render :partial => "widgets/settings" )%>");
-<%- @widget.input_class.settings.each do |s| %>
-$widget_settings.find("#widget_settings_<%= s.config.name %>").val("<%= raw escape_javascript(@widget.settings[s.config.name]) %>")
-<%- end %>
-widgetObj = widget("<%= @widget.guid %>");
-widgetObj.setWidgetType("<%= @widget.widget_type %> <%= @widget.input_type %>")
-widgetObj.setWidgetContent($widget_content);
-widgetObj.setWidgetSettings($widget_settings);
-widgetObj.setWidgetTitle("<%= @widget.widget_class.title %>");
-widgetObj.setInputTitle("<%= @widget.input_class.title %>");
-widgetObj.setMode("normal");
-
-<%= render :partial => "widgets/#{@widget.dashed_widget_type}/javascript" %>
+<%= render :partial => "widgets/view", :locals => {:widget => @widget, :widget_data => @widget_data} %>

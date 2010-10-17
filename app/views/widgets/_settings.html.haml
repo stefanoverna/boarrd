@@ -1,4 +1,4 @@
-= simple_form_for :widget_settings, :url => dashboard_widget_path(@widget.dashboard, @widget), :html => { :method => :put }, :remote => true do |f|
-  - @widget.input_class.settings.each do |setting|
+= simple_form_for :widget_settings, :url => dashboard_widget_path(widget.dashboard, widget), :html => { :method => :put }, :remote => true do |f|
+  - widget.input_class.settings.each do |setting|
     = f.input setting.config.name, setting.config.input
   = f.button :submit

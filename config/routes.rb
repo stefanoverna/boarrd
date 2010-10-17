@@ -1,11 +1,11 @@
 Boarrd::Application.routes.draw do
   devise_for :users
   root :to => "welcome#index"
-  resources :dashboards do
+  resources :dashboards, :except => [:edit, :update] do
     collection do
       match "inputs_for/:widget_type" => "dashboards#inputs_for", :as => :inputs_for
     end
-    resources :widgets do
+    resources :widgets, :only => [:create, :update, :destroy] do
       member do
         get :settings
       end

@@ -1,8 +1,8 @@
 %ul.items
-  - @widget_data.items.each do |item|
+  - widget_data.items.each do |item|
     %li
       .header
-        %h3.primary_text= link_to item.primary_text[0..25], item.link
+        %h3.primary_text= link_to item.primary_text, item.link
         - if item.optional_text
           %span.optional_text
             - if !item.optional_text.is_a? String

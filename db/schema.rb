@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101016135033) do
+ActiveRecord::Schema.define(:version => 20101016233109) do
+
+  create_table "cache_requests", :force => true do |t|
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "dashboards", :force => true do |t|
     t.integer  "user_id"
