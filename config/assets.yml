@@ -21,3 +21,5 @@ javascripts:
   - public/javascripts/jquery.zweatherfeed.js
   - public/javascripts/jquery.tzineClock.js
   - public/javascripts/application.js
+  - public/javascripts/jquery.mousewheel.js
+  - public/javascripts/jquery.jscrollpane.js
