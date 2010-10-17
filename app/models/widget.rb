@@ -1,6 +1,9 @@
 require 'widgets'
 
 class Widget < ActiveRecord::Base
+
+  attr_accessor :widget_input_types
+
   belongs_to :dashboard
   serialize :settings, Hash
 
@@ -11,6 +14,8 @@ class Widget < ActiveRecord::Base
   validates_presence_of :guid
 
   has_friendly_id :guid
+
+  before_validation :check_for_widget_input_types_presence
 
   def widget_class
     Widgets::find_by_slug(widget_type)
@@ -69,5 +74,14 @@ class Widget < ActiveRecord::Base
       hash << "%s=%s" % [k.to_s, v.to_s]
     end
     Digest::MD5.hexdigest hash.join("&")
+  end
+
+  private
+
+  def check_for_widget_input_types_presence
+    if widget_input_types
+      self.widget_type = widget_input_types.split("#")[0]
+      self.input_type = widget_input_types.split("#")[1]
+    end
   end
 end

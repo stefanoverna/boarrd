@@ -33,20 +33,6 @@ jQuery(document).ready(function($) {
         this._$newdom.find("#widget_guid").val(guid);
 
         $.facebox(this._$newdom);
-
-        // widget type select --> show input type select
-        this._$newdom.find("#widget_widget_type").change(function() {
-          var widget_type = $(this).val();
-          $.ajax({
-            url: self._dashboard_data.input_for_path.replace(":widget_type", widget_type),
-            success: function(dom) {
-              if (self._$widget_input_field) {
-                self._$widget_input_field.remove();
-              }
-              self._$widget_input_field = $(dom).insertBefore(self._$newdom.find("#widget_area"));
-            }
-          });
-        });
       }
 
     },
@@ -99,7 +85,10 @@ jQuery(document).ready(function($) {
       this._$dom.addClass(type);
     },
     remove: function() {
-      this._$dom.remove();
+      var self = this;
+      this._$dom.slideUp(function() {
+        self.remove();
+      });
     }
   }
 
