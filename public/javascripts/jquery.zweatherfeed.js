@@ -52,7 +52,8 @@
 			now = new Date()
 					
 			// Create Yahoo Weather feed API address
-			var query = "select * from weather.forecast where location in ("+ locationid +") and u='"+ options.unit +"'";
+      var location = "select id from xml where url=\"http://xoap.weather.com/search/search?where="+ locationid +"\" and itemPath=\"search.loc\"";
+			var query = "select * from weather.forecast where location in ("+ location +") and u='"+ options.unit +"'";
 			var api = 'http://query.yahooapis.com/v1/public/yql?q='+ encodeURIComponent(query) +'&rnd='+ now.getFullYear() + now.getMonth() + now.getDay() + now.getHours() +'&format=json&callback=?';
 
 			// Send request
