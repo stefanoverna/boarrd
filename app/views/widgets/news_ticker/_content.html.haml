@@ -10,4 +10,4 @@
         - if !item.optional_text.is_a? String
           = time_ago_in_words(item.optional_text) + " ago"
         - else
-          = snippet(sanitize(item.secondary_text), 10)
+          = snippet(sanitize(item.secondary_text), 5)
