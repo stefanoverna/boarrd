@@ -3,15 +3,22 @@
     .item
       %h2
         - if item.link
-          = link_to item.primary_text, item.link 
+          = link_to snippet(item.primary_text, 5), item.link 
         - else
-          item.primary_text
+          = snippet(item.primary_text, 5)
       %p.details
         - if !item.optional_text.is_a? String
-          = time_ago_in_words(item.optional_text) + " ago"
-        - else
+          - if item.optional_text < Date.today
+            = distance_of_time_in_words(Time.now, item.optional_text) + " ago"
+          - else
+            = "in " + distance_of_time_in_words(Time.now, item.optional_text)
+        - elsif item.secondary_text
           = snippet(sanitize(item.secondary_text), 5)
-      %span.popup
-        %h4
-          = link_to item.primary_text, item.link
-        = snippet(sanitize(item.secondary_text), 25)
+          
+      - if item.secondary_text
+        %span.popup
+          %h4
+            = link_to item.primary_text, item.link
+          = snippet(sanitize(item.secondary_text.to_s), 25)
+
+
