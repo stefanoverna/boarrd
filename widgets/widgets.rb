@@ -18,7 +18,7 @@ module Widgets
       Widgets::NewsTicker,
       Widgets::NewsCycle,
       Widgets::NewsMultiple,
-      Widgets::SpecialWeather
+      Widgets::SpecialWeather,
       Widgets::PieChart,
       Widgets::BarChart
     ]
