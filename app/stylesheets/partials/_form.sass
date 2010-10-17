@@ -3,6 +3,10 @@ form
     :overflow hidden
     :clear both
     :padding-bottom 15px
+  .hint
+    :font-size 12px
+    :color #999
+    :margin-top 3px
   label
     :font-family "Lucida Grande", Verdana, sans-serif
     :font-size 15px
@@ -11,9 +15,16 @@ form
     :margin-right 10px
     :vertical-align middle
     :display block
+    :margin-bottom 3px
     &.inline
       :display inline
-  input[type=text], input[type=email], input[type=password]
+    &.required:after
+      :content "(required!)"
+      :font-size 12px
+      :color #999
+      :padding-left 5px
+      
+  input[type=text], input[type=email], input[type=password], input[type=url]
     :width 95%
     :background #fefefe
     :border 1px solid #bbb
@@ -26,15 +37,8 @@ form
     :border-radius 3px
     :outline none
     :vertical-align middle
-    &.medium
-      :width 600px
-    &.big
-      :width 98%
-    &.date_picker
-      :width 100px
-      :padding-right 36px
-      :cursor pointer
-      :background url(/images/admin/cal.jpg) center right no-repeat
+    &.required
+      :border 2px solid #4095DF
   textarea
     :width 96%
     :height 140px
