@@ -1,4 +1,3 @@
 .flickr
   - widget_data.items.each do |item|
-    %a{:href => "#{item.link}", :title => "#{item.title}"}
-      %img{:src => "#{item.image}"}
+    %a{:href => "#{item.link}", :title => "#{item.title}", :style=>"background-image: url(#{item.image})"}
