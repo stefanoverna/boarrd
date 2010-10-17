@@ -50,8 +50,11 @@
   }
   $.fn.jclock.displayTime = function(el) {
     var time = $.fn.jclock.getTime(el);
-    el.html(time);
-    el.timerID = setTimeout(function(){$.fn.jclock.displayTime(el)},1000);
+    el.children('.jclock').html(time);
+    var myDate = new Date();
+    var prettyDate =myDate.getDate() + '/' + (myDate.getMonth()+1) + '/' + myDate.getFullYear();
+    el.children('.jdate').html(prettyDate);
+    el.children('.jclock').timerID = setTimeout(function(){$.fn.jclock.displayTime(el)},1000);
   }
   $.fn.jclock.getTime = function(el) {
     var now = new Date();
