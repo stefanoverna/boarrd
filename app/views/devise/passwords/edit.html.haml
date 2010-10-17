@@ -1,11 +1,17 @@
-= render :partial => 'layouts/form_errors', :locals => {:resource => resource}
-= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-  = f.hidden_field :reset_password_token
-  = f.input :password
-  = f.input :password_confirmation
-  .input
-    = f.submit "Change password!", :class => "long"
-        
-= content_for :actions do
-  = render :partial => "devise/shared/links"
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+
+  = block :block_class => "small login center" do
+    = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize] do
+      = render :partial => "devise/shared/links"
+
+    = block_content do
+      = render :partial => 'layouts/flashes'
+      = render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+
+      = f.hidden_field :reset_password_token
+      = f.input :password
+      = f.input :password_confirmation
+
+  = f.submit "Change password!", :class => "full-width-button"
+
 

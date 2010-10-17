@@ -1,0 +1,6 @@
+= render "form"
+
+= content_for :actions do
+  %ul
+    %li= link_to "Show", dashboard_url(@dashboard)
+    %li= link_to "My Boarrds", @dashboards_url
