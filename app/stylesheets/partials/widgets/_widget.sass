@@ -31,10 +31,35 @@
     +border-top-radius(5px)
     +box-shadow(#212121, 0px, -2px, 2px)
     +linear-gradient(color-stops(#C22222, #931B1C))
+    +text-shadow(darken(#931B1C, 40%), 0px, -1px, 1px)
+      
+  &.github-issues .type-bar, &.github-project-issues .type-bar, &.github-top-committers .type-bar, &.github-commits .type-bar
+    +linear-gradient(color-stops(#26C022, #1E8F1B))
+    +text-shadow(darken(#1E8F1B, 40%), 0px, -1px, 1px)
+    
+  &.feed-input .type-bar
+    +linear-gradient(color-stops(#D2C62B, #B5A320))
+    +text-shadow(darken(#B5A320, 40%), 0px, -1px, 1px)
+  
+  &.twitter-search .type-bar
+    +linear-gradient(color-stops(#38CDFF, #2995BC))
+    +text-shadow(darken(#2995BC, 40%), 0px, -1px, 1px)
+  
+  &.calendar-events .type-bar
+    +linear-gradient(color-stops(#8BC3E6, #618FA7))
+    +text-shadow(darken(#618FA7, 40%), 0px, -1px, 1px)
+
+  &.weather .type-bar
+    +linear-gradient(color-stops(#8BC3E6, #618FA7))
+    +text-shadow(darken(#618FA7, 40%), 0px, -1px, 1px)
     
 .widget-content
 
   .new-mode
+    :padding 5px
+    :padding-left 7px
+    
+  .edit-mode
     :padding 5px
     :padding-left 7px
   
