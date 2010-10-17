@@ -2,10 +2,10 @@
   %h1.dashboard-title= @dashboard.title
   .column#area1
     .add-new-widget
-      = submit_tag "Add a new Widget..."
+      = submit_tag "Add a new Widget...", :class => "full-width-button"
   .column#area2
     .add-new-widget
-      = submit_tag "Add a new Widget..."
+      = submit_tag "Add a new Widget...", :class => "full-width-button"
  
   %script{:type => "text/json"}
     != @dashboard_settings.to_json

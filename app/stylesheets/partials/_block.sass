@@ -17,7 +17,6 @@
   :font-weight normal
   :color #ddd
   :text-align center
-  :margin-top 20px
   :display block
   :border-width 0px
   :width 100%
@@ -36,7 +35,11 @@
   +border-radius(5px)
   +border-top-radius(8px)
   +box-shadow(black, 0px, 3px, 6px)
-    
+  :margin-bottom 20px
+  :padding-bottom 5px
+  :float none
+  :margin 0 auto
+
   .block_head
     :height 54px
     :line-height 54px
@@ -104,31 +107,4 @@
           
     select
       :text-transform none
-
-  &.small
-    :width 49%
-    :background white url(/images/admin/bnd.gif) bottom center repeat-x
-    :padding-bottom 0
-    
-    &.left
-      :float left
-      :clear none
       
-    &.right
-      :float right
-      :clear none
-      
-    .block_head
-
-    .block_content
-      :background #fff
-      :border-left 1px solid #ccc
-      :border-right 1px solid #ccc
-      
-      input.text, textarea
-        :width 96%
-        :padding 7px
-        
-    &.center
-      :float none
-      :margin 0 auto
