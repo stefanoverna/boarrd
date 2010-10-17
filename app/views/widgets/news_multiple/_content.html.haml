@@ -19,4 +19,4 @@
             - else
               = item.optional_text
       - if item.secondary_text
-        %p.secondary_text= snippet(sanitize(item.secondary_text), 30)
+        %p.secondary_text= snippet(sanitize(item.secondary_text.to_s), 30)
