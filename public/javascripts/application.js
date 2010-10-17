@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
     remove: function() {
       var self = this;
       this._$dom.slideUp(function() {
-        self.remove();
+        self._$dom.remove();
       });
     }
   }

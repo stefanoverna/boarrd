@@ -23,11 +23,10 @@ module Widgets
       Widgets::NewsCycle,
       Widgets::NewsMultiple,
       Widgets::Weather,
-      Widgets::FlickrWidget,
       Widgets::Clock,
       Widgets::PieChart,
       Widgets::BarChart,
-      Widgets::Flickr,
+      Widgets::FlickrWidget,
       Widgets::Countdown
     ]
   end

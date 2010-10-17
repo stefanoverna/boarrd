@@ -1,4 +1,4 @@
-.countdown_dashboard{:"date" => widget_data.item.date}
+.countdown_dashboard{:"datetime" => widget_data.countdown_datetime.strftime("%Y-%m-%d-%I-%M")}
   .dash.weeks_dash
     %span.dash_title weeks
     .digit 0
