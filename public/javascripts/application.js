@@ -1,3 +1,5 @@
+$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+
 jQuery(document).ready(function($) {
 
   function GUID() {

@@ -12,6 +12,7 @@ javascripts:
   - public/javascripts/jquery.ui.js
   - public/javascripts/jquery.rails.js
   - public/javascripts/jquery.metadata.js
+  - public/javascripts/jquery.blockUI.js
   - public/javascripts/jquery.easyAccordion.js
   - public/javascripts/js-class.js
   - public/javascripts/bluff-src.js
@@ -26,3 +27,4 @@ javascripts:
   - public/javascripts/jquery.facebox.js
   - public/javascripts/jquery.jscrollpane.js
   - public/javascripts/jquery.lwtCountdown.js
+
