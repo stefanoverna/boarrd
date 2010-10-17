@@ -64,8 +64,7 @@ class Widget < ActiveRecord::Base
         request.value = input.to_xml.serialize
         request.save
         input
-      rescue Widgets::ValidationError
-        nil
+      rescue
       end
     else
       input_class.from_xml(request.value)
