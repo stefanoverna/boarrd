@@ -24,8 +24,10 @@ jQuery(document).ready(function($) {
     init: function(area, guid, is_new) {
       var self = this;
       this._dashboard_data = $("#dashboard").metadata({type: "elem", name: "script"});
+      this._$dom = $("#dashboard .widget-template > .widget-box").clone();
       this._guid = guid;
       this._area = area;
+      this._is_new = is_new;
 
       if (is_new) {
         this._$newdom = $("#dashboard .widget-template > .widget-box .new-mode").clone();
@@ -41,9 +43,9 @@ jQuery(document).ready(function($) {
 
       $("#facebox .close").click();
 
-      if (this._$dom) return;
+      if (this._$dom.parents(".column").length > 0) return;
 
-      this._$dom = $("#dashboard .widget-template > .widget-box").clone().appendTo("#"+this._area+" .column-inner");
+      this._$dom.appendTo("#"+this._area+" .column-inner");
 
       // settings button
       this._$dom.find(".widget-head .actions .settings a").click(function() {
@@ -61,6 +63,17 @@ jQuery(document).ready(function($) {
         });
         return false;
       });
+
+      if (this._is_new) {
+        this._is_new = false;
+        setTimeout(
+          function() {
+            self.showSettings();
+          },
+          1000
+        );
+      }
+
     },
     guid: function() {
       return this._guid;
