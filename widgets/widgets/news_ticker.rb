@@ -239,13 +239,13 @@ module Widgets
 
         tweets = Twitter::Search.new("#{self.word}")
 
-        raise ValidationError, "Invalid data!" if feed.tweets.nil?
+        raise ValidationError, "Invalid data!" if tweets.nil?
 
         self.items = []
         tweets.entries[0..5].each do |tweet|
           item = NewsItem.new
           item.primary_text = tweet["text"]
-          item.secondary_text = "By " + tweet["from_user"]
+          item.secondary_text = "@"+tweet["from_user"]
           item.optional_text = Date.parse(tweet["created_at"])
           item.link = "http://twitter.com/" + tweet["from_user"] + "/status/" + tweet["id"].to_s
           self.items << item
@@ -297,7 +297,7 @@ module Widgets
 
     end
 
-    self.inputs = [ Widgets::NewsTicker::FeedInput, Widgets::NewsTicker::CalendarEvents, Widgets::NewsTicker::FacebookFeedInput ]
+    self.inputs = [ Widgets::NewsTicker::FeedInput, Widgets::NewsTicker::CalendarEvents, Widgets::NewsTicker::FacebookFeedInput, Widgets::NewsTicker::TwitterSearch ]
     self.slug = :"news-ticker"
     self.title = "NewsTicker Widget"
 

@@ -118,11 +118,20 @@ jQuery(document).ready(function($) {
     });
 
     $columns.sortable({
-      handle: '.widget-head',
-      connectWith: $columns,
+      forcePlaceholderSize: true,
+      tolerance: 'pointer',
+      dropOnEmpty: true,
+      connectWith: ".column .column-inner",
       placeholder: 'widget-ghost',
-      start: function(event, ui) {},
+      handle: '.widget-head',
+      opacity: 0.7,
+      revert: true,
+      start: function(event, ui) {
+        $("#dashboard").addClass("dragging-mode");
+      },
       stop: function(event, ui) {
+
+        $("#dashboard").removeClass("dragging-mode");
 
         var params = []
         $.each(window.widgets, function() {
