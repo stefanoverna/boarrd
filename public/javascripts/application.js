@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
       return this._guid;
     },
     showSettings: function() {
-      $.facebox(this._$dom.find(".edit-mode"));
+      $.facebox(this._$dom.find(".edit-mode").clone());
     },
     setWidgetTitle: function(title) {
       this._$dom.find(".widget-head .title").text(title);
@@ -124,7 +124,7 @@ jQuery(document).ready(function($) {
       var $area = $(this);
       $area.parents(".column").find(".add-new-widget input").click(function() {
         var guid = GUID();
-        window.widgets.push(new Widget($area.attr("id"), guid, true));
+        window.widgets.push(new Widget($area.parents(".column").attr("id"), guid, true));
       });
     });
 
