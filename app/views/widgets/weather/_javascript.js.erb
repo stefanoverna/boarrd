@@ -1,0 +1,7 @@
+$widget_content.each(function() {
+  var $this = $(this);
+  
+  var location = $('.weather', $this).attr("location");
+  $('.weather', $this).weatherfeed([location], {link: 0});
+
+});
