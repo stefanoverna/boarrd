@@ -64,6 +64,8 @@ module Widgets
 
         issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/#{self.status}#{params}").read)
 
+        raise ValidationError, "Invalid data!" if issue_list["issues"].nil?
+
         self.items = []
         issue_list["issues"].entries[0..5].each do |issue|
           item = NewsItem.new
@@ -124,6 +126,8 @@ module Widgets
 
         commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}#{params}").read)
 
+        raise ValidationError, "Invalid data!" if commit_list["commits"].nil?
+
         self.items = []
         commit_list["commits"].entries[0..5].each do |commit|
           item = NewsItem.new
@@ -157,6 +161,9 @@ module Widgets
         end
 
         cals = Icalendar.parse open(self.url).read
+
+        raise ValidationError, "Invalid data!" if cals.nil?
+
         cal = cals.first
 
         self.items = []
@@ -187,10 +194,15 @@ module Widgets
       end
 
       def refresh
+
         unless self.valid?
           raise ValidationError, self.errors
         end
+
         feed = FeedNormalizer::FeedNormalizer.parse open(self.url)
+
+        raise ValidationError, "Invalid data!" if feed.nil?
+
         self.items = []
         feed.entries[0..6].each do |entry|
           item = NewsItem.new
@@ -206,7 +218,7 @@ module Widgets
       self.slug = :"feed-input"
 
     end
-    
+
     class TwitterSearch < Input
       include Widgets::Configurable
 
@@ -222,7 +234,9 @@ module Widgets
         end
 
         tweets = Twitter::Search.new("#{self.word}")
-        
+
+        raise ValidationError, "Invalid data!" if feed.tweets.nil?
+
         self.items = []
         tweets.entries[0..5].each do |tweet|
           item = NewsItem.new
@@ -239,7 +253,7 @@ module Widgets
       self.slug = :"twitter-search"
 
     end
-    
+
     class FacebookFeedInput < Input
       include Widgets::Configurable
 
@@ -253,10 +267,15 @@ module Widgets
       end
 
       def refresh
+
         unless self.valid?
           raise ValidationError, self.errors
         end
+
         feed = FeedNormalizer::FeedNormalizer.parse open(self.url)
+
+        raise ValidationError, "Invalid data!" if feed.nil?
+
         self.items = []
         feed.entries[0..6].each do |entry|
           item = NewsItem.new
@@ -266,6 +285,7 @@ module Widgets
           item.link = entry.url
           self.items << item
         end
+
       end
 
       self.title = "Feed Input"
