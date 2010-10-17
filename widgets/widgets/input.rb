@@ -12,10 +12,10 @@ module Widgets
     end
 
     def update(params)
-      key = params.keys.match{ |p|
+      key = params.keys.find{ |p|
         p.match(/\(5i\)$/)
       }
-      if param = key.gsub /\(5i\)$/, ''
+      if key and param = key.gsub(/\(5i\)$/, '')
         DateTime.civil(
           params[param+"(1i)"],
           params[param+"(2i)"],
