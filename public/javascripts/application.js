@@ -138,42 +138,44 @@ jQuery(document).ready(function($) {
       });
     });
 
-    $columns.sortable({
-      forcePlaceholderSize: true,
-      tolerance: 'pointer',
-      dropOnEmpty: true,
-      connectWith: ".column .column-inner",
-      placeholder: 'widget-ghost',
-      handle: '.widget-head',
-      delay: 500,
-      opacity: 0.7,
-      revert: true,
-      start: function(event, ui) {
-        $("#dashboard").addClass("dragging-mode");
-      },
-      stop: function(event, ui) {
+    if (data.editable) {
+      $columns.sortable({
+        forcePlaceholderSize: true,
+        tolerance: 'pointer',
+        dropOnEmpty: true,
+        connectWith: ".column .column-inner",
+        placeholder: 'widget-ghost',
+        handle: '.widget-head',
+        delay: 500,
+        opacity: 0.7,
+        revert: true,
+        start: function(event, ui) {
+          $("#dashboard").addClass("dragging-mode");
+        },
+        stop: function(event, ui) {
 
-        $("#dashboard").removeClass("dragging-mode");
+          $("#dashboard").removeClass("dragging-mode");
 
-        var params = []
-        $.each(window.widgets, function() {
-          var index = this._$dom.prevAll().length;
-          params.push({
-            area_position: index,
-            area: this._$dom.parents(".column").attr("id"),
-            guid: this.guid()
+          var params = []
+          $.each(window.widgets, function() {
+            var index = this._$dom.prevAll().length;
+            params.push({
+              area_position: index,
+              area: this._$dom.parents(".column").attr("id"),
+              guid: this.guid()
+            });
           });
-        });
 
-        $.ajax({
-          url: data.reorder_widgets_path,
-          dataType: 'script',
-          type: "get",
-          data: {"reordered_widgets": JSON.stringify(params)}
-        });
+          $.ajax({
+            url: data.reorder_widgets_path,
+            dataType: 'script',
+            type: "get",
+            data: {"reordered_widgets": JSON.stringify(params)}
+          });
 
-      }
-    });
+        }
+      });
+    }
 
   });
 
