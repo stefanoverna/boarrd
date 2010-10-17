@@ -1,7 +1,7 @@
 Boarrd::Application.routes.draw do
   devise_for :users
   root :to => "welcome#index"
-  resources :dashboards, :except => [:edit, :update] do
+  resources :dashboards do
     member do
       get :reorder_widgets
     end

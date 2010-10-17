@@ -36,6 +36,7 @@ class WidgetsController < ApplicationController
 
   def update
     @widget = Widget.find(params[:id])
+    @widget.title = params[:widget_settings].delete(:title)
     @widget.settings = params[:widget_settings]
 
     if @widget.save and @widget.all_valid?

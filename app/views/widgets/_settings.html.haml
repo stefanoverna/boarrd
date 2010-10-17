@@ -1,5 +1,6 @@
 %h3= widget.input_class.title
 = simple_form_for :widget_settings, :url => dashboard_widget_path(widget.dashboard, widget), :html => { :method => :put }, :remote => true do |f|
+  = f.input :title, :required => true
   - widget.input_class.settings.each do |setting|
     = f.input setting.config.name, setting.config.input.merge({:hint => setting.config.hint, :label => setting.config.label, :required => setting.config.required})
   = f.button :submit
