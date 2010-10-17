@@ -1,8 +1,8 @@
 $widget_content.each(function() {
   var $this = $(this);
-  $(this, '#news-cycle-ea').easyAccordion({
+  $('#news-cycle-ea', $this).easyAccordion({
     autoStart: true,
     slideInterval: 3000,
-    slideNum: false	
+    slideNum: false
   });
 });
