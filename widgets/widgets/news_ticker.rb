@@ -41,12 +41,28 @@ module Widgets
         is_required
       end
 
+      setting :login do
+        label "Personal Login"
+        input :as => :string
+      end
+
+      setting :token do
+        label "Personal Token"
+        input :as => :string
+      end
+
       def refresh
         unless self.valid?
           raise ValidationError, self.errors
         end
 
-        issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/#{self.status}").read)
+        params = if self.token and self.login
+          params = "?login=#{self.login}&token=#{self.token}"
+        else
+          ""
+        end
+
+        issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/#{self.status}#{params}").read)
 
         self.items = []
         issue_list["issues"].entries[0..5].each do |issue|
@@ -63,7 +79,7 @@ module Widgets
       self.slug = :"github-issues"
 
     end
-    
+
     class GithubCommits < Input
       include Widgets::Configurable
 
@@ -85,12 +101,28 @@ module Widgets
         is_required
       end
 
+      setting :login do
+        label "Personal Login"
+        input :as => :string
+      end
+
+      setting :token do
+        label "Personal Token"
+        input :as => :string
+      end
+
       def refresh
         unless self.valid?
           raise ValidationError, self.errors
         end
 
-        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}").read)
+        params = if self.token and self.login
+          params = "?login=#{self.login}&token=#{self.token}"
+        else
+          ""
+        end
+
+        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}#{params}").read)
 
         self.items = []
         commit_list["commits"].entries[0..5].each do |commit|

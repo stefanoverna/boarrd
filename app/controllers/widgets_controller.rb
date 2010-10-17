@@ -13,6 +13,11 @@ class WidgetsController < ApplicationController
     render_view
   end
 
+  def destroy
+    @widget = Widget.find(params[:id])
+    @widget.destroy
+  end
+
   def create
 
     @widget = Widget.new(params[:widget])

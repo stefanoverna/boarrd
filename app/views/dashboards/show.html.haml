@@ -1,4 +1,5 @@
 .dashboard
+  .h1.dashboard-title= @dashboard.title
   .column#area1
     .add-new-widget
       = submit_tag "Add a new Widget..."
@@ -13,12 +14,12 @@
     .widget-box
       .widget-head
         .title
-          %h1 Pippo
         .actions
-          %img{:src => "/images/admin/quit.png", :alt => "Delete widget"}
-          %img{:src => "/images/admin/gears.png", :alt => "Settings"}
+          %ul
+            %li.remove= link_to "Remove Widget", "#"
+            %li.settings= link_to "Toggle Settings", "#"
       .widget-content
-        .type-bar Feed
+        .type-bar
         .mode.new-mode
           = simple_form_for [@dashboard, Widget.new], :remote => true do |f|
             = f.input :widget_type, :collection => @available_widgets, :label_method => :title, :value_method => :slug
