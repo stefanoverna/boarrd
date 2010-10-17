@@ -289,7 +289,12 @@ module Widgets
           item.primary_text = entry.title
           item.secondary_text = entry.content
           item.optional_text = "by " + entry.authors[0]
-          item.link = entry.url
+          
+          url = entry.url
+          if !url.include? "http"
+            url = "http://facebook.com" + url
+          end
+          item.link = url
           self.items << item
         end
 
