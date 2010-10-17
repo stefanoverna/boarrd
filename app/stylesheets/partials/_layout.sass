@@ -23,6 +23,8 @@
   :font-weight normal
   :font-style normal
 
+html, body
+  :height   100%
 
 body
   :background #252525 url(/images/noise.png) repeat scroll 0 0
@@ -94,7 +96,8 @@ body
   
   #hld
     //:background url(/images/admin/hld.jpg) repeat-x scroll 0 0 transparent
-    :min-height 402px
+    //:min-height 402px
+    :min-height 100%
     
     .menu-hud
       :background rgba(0,0,0,0.4)
@@ -121,3 +124,30 @@ body
     .wrapper
       :margin 0 auto
       :width 960px
+      //:overflow auto
+      :padding-bottom 150px
+
+  #footer
+    :position relative
+    :margin-top -150px
+    :height 100px
+    :clear both
+    
+    :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+    :font-size 20px
+    :background rgba(0,0,0,0.4)
+    :color #aaa
+    :padding 30px
+    :padding-top 20px
+    :text-align center
+    //:height 80px
+    
+    p
+      :line-height 190%
+      
+      span.bracket
+        :font-weight bold
+        :font-size 200%
+        :vertical-align middle
+        :margin 0 10px 0 10px
+        

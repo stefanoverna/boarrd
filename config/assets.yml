@@ -25,3 +25,4 @@ javascripts:
   - public/javascripts/jquery.mousewheel.js
   - public/javascripts/jquery.facebox.js
   - public/javascripts/jquery.jscrollpane.js
+  - public/javascripts/jquery.lwtCountdown.js
