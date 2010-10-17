@@ -62,9 +62,11 @@ module Widgets
           ""
         end
 
-        issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/#{self.status}#{params}").read)
-
-        raise ValidationError, "Invalid data!" if issue_list["issues"].nil?
+        begin
+          issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/#{self.status}#{params}").read)
+        rescue
+          raise ValidationError, "Invalid data!"
+        end
 
         self.items = []
         issue_list["issues"].entries[0..5].each do |issue|
@@ -124,9 +126,11 @@ module Widgets
           ""
         end
 
-        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}#{params}").read)
-
-        raise ValidationError, "Invalid data!" if commit_list["commits"].nil?
+        begin
+          commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}#{params}").read)
+        rescue
+          raise ValidationError, "Invalid data!"
+        end
 
         self.items = []
         commit_list["commits"].entries[0..5].each do |commit|
@@ -288,8 +292,8 @@ module Widgets
 
       end
 
-      self.title = "Feed Input"
-      self.slug = :"feed-input"
+      self.title = "Facebook Input"
+      self.slug = :"facebook-input"
 
     end
 

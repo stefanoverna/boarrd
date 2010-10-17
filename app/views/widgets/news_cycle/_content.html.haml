@@ -1,7 +1,12 @@
-%div#news-cycle-ea.news-cycle
-  %dl
-    - widget_data.items.each do |item|
-      %dt
-        = item.primary_text
-      %dd
-        = link_to snippet(sanitize(item.secondary_text), 50), item.link
+%div
+  .news-cycle-ea.news-cycle
+    %dl
+      - widget_data.items.each do |item|
+        %dt
+          = item.primary_text
+        %dd
+          - if item.secondary_text
+            = link_to snippet(sanitize(item.secondary_text), 50), item.link
+          - else
+            %i
+              No text to be displayed

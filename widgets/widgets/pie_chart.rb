@@ -53,10 +53,12 @@ module Widgets
           ""
         end
 
-        open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/open#{params}").read)
-        closed_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/closed#{params}").read)
-
-        raise ValidationError, "Invalid data!" if open_issue_list["issues"].nil? or closed_issue_list["issues"].nil?
+        begin
+          open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/open#{params}").read)
+          closed_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{self.repository}/closed#{params}").read)
+        rescue
+          raise ValidationError, "Invalid data!"
+        end
 
         open_slice = Slice.new
         open_slice.label = "Open Issues"
