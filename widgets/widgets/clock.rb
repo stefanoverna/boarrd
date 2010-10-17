@@ -1,7 +1,7 @@
 module Widgets
   class Clock < BaseWidget
 
-    self.inputs = [ Widgets::NewsTicker::FeedInput ]
+    self.inputs = []
     self.slug = :"clock"
     self.title = "Clock"
 

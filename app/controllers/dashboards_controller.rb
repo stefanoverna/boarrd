@@ -54,22 +54,14 @@ class DashboardsController < ApplicationController
       areas[widget.area] << widget.guid
     end
 
-    @available_widgets = Widgets::available_widgets
+    @available_inputs_widgets_slugs = Widgets::available_inputs_widgets_slugs
 
     @dashboard_settings = {
       :dashboard_path => dashboard_path(@dashboard),
-      :input_for_path => inputs_for_dashboards_path(:widget_type => ":widget_type"),
       :widget_show_path => dashboard_widget_path(@dashboard, ":id"),
       :reorder_widgets_path => reorder_widgets_dashboard_path(@dashboard),
       :dashboard_areas_widgets => areas
     }
   end
-
-  def inputs_for
-    widget_module = Widgets::find_by_slug(params[:widget_type])
-    @available_inputs = widget_module.available_inputs
-    render :layout => false
-  end
-
 
 end
