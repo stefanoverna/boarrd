@@ -127,7 +127,7 @@ module Widgets
         self.items = []
         commit_list["commits"].entries[0..5].each do |commit|
           item = NewsItem.new
-          item.primary_text = commit["id"]
+          item.primary_text = "[" + commit["id"][0..5] + "] " + commit["message"]
           item.secondary_text = "By " + commit["committer"]["name"]
           item.optional_text = Date.parse(commit["committed_date"])
           item.link = commit["url"]
@@ -206,8 +206,74 @@ module Widgets
       self.slug = :"feed-input"
 
     end
+    
+    class TwitterSearch < Input
+      include Widgets::Configurable
 
-    self.inputs = [ Widgets::NewsTicker::FeedInput, Widgets::NewsTicker::CalendarEvents ]
+      setting :word do
+        label "Search phrase"
+        input :as => :string
+        is_required
+      end
+
+      def refresh
+        unless self.valid?
+          raise ValidationError, self.errors
+        end
+
+        tweets = Twitter::Search.new("#{self.word}")
+        
+        self.items = []
+        tweets.entries[0..5].each do |tweet|
+          item = NewsItem.new
+          item.primary_text = tweet["text"]
+          item.secondary_text = "By " + tweet["from_user"]
+          item.optional_text = Date.parse(tweet["created_at"])
+          item.link = "http://twitter.com/" + tweet["from_user"] + "/status/" + tweet["id"].to_s
+          self.items << item
+        end
+
+      end
+
+      self.title = "Twitter Search"
+      self.slug = :"twitter-search"
+
+    end
+    
+    class FacebookFeedInput < Input
+      include Widgets::Configurable
+
+      setting :url do
+        input :as => :url
+        label "Feed URL"
+        hint "The feed you want to visualize"
+        default_value "http://"
+        is_required
+        has_format :with => URI::regexp(["http", "https"])
+      end
+
+      def refresh
+        unless self.valid?
+          raise ValidationError, self.errors
+        end
+        feed = FeedNormalizer::FeedNormalizer.parse open(self.url)
+        self.items = []
+        feed.entries[0..6].each do |entry|
+          item = NewsItem.new
+          item.primary_text = entry.title
+          item.secondary_text = entry.content
+          item.optional_text = entry.date_published
+          item.link = entry.url
+          self.items << item
+        end
+      end
+
+      self.title = "Feed Input"
+      self.slug = :"feed-input"
+
+    end
+
+    self.inputs = [ Widgets::NewsTicker::FeedInput, Widgets::NewsTicker::CalendarEvents, Widgets::NewsTicker::FacebookFeedInput ]
     self.slug = :"news-ticker"
     self.title = "NewsTicker Widget"
 
