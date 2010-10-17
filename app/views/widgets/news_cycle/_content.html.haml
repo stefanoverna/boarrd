@@ -1,5 +1,5 @@
 %div
-  #news-cycle-ea.news-cycle
+  .news-cycle-ea.news-cycle
     %dl
       - widget_data.items.each do |item|
         %dt
@@ -8,4 +8,4 @@
           - if item.secondary_text
             = link_to snippet(sanitize(item.secondary_text), 50), item.link
           - else
-            = link_to "PUPPA", "#"
+            = "No text to be displayed"
