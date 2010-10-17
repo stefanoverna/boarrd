@@ -1,7 +1,11 @@
 %div
   - widget_data.items.each do |item|
     .item
-      %h2= link_to item.primary_text, item.link 
+      %h2
+        - if item.link
+          = link_to item.primary_text, item.link 
+        - else
+          item.primary_text
       %p.details
         - if !item.optional_text.is_a? String
           = time_ago_in_words(item.optional_text) + " ago"

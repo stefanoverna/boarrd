@@ -3,11 +3,19 @@
   - widget_data.items.each do |item|
     %li
       .header
-        %h3.primary_text= link_to item.primary_text[0..30], item.link
+        %h3.primary_text
+          - if item.link
+            = link_to item.primary_text[0..30], item.link
+          - else
+            = item.primary_text[0..30]
+          
         - if item.optional_text
           %span.optional_text
             - if !item.optional_text.is_a? String
-              = time_ago_in_words(item.optional_text) + " ago"
+              - if item.optional_text < Date.today
+                = distance_of_time_in_words(Time.now, item.optional_text) + " ago"
+              - else
+                = "in " + distance_of_time_in_words(Time.now, item.optional_text)
             - else
               = item.optional_text
       - if item.secondary_text
