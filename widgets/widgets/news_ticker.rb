@@ -301,7 +301,7 @@ module Widgets
 
     self.inputs = [ Widgets::NewsTicker::FeedInput, Widgets::NewsTicker::CalendarEvents, Widgets::NewsTicker::FacebookFeedInput, Widgets::NewsTicker::TwitterSearch ]
     self.slug = :"news-ticker"
-    self.title = "NewsTicker Widget"
+    self.title = "News-Ticker"
 
   end
 end

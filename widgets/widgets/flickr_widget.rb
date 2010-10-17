@@ -79,7 +79,7 @@ module Widgets
 
     self.inputs = [ Widgets::FlickrWidget::FlickrInput ]
     self.slug = :"flickr-widget"
-    self.title = "Flickr"
+    self.title = "Viewer"
 
   end
 end
