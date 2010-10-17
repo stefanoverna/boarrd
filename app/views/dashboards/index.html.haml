@@ -1,0 +1,38 @@
+= block :block_class => "small login center" do
+  = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize]
+  = block_content do
+    = render :partial => 'layouts/flashes'
+    - if @dashboards.any?
+
+      %table.sortable(width="100%")
+        %thead
+          %tr
+            - Dashboard.ui_editable_attributes.each do |a|
+              %th.header= a.to_s.humanize
+            %th Actions
+        %tbody
+          - @dashboards.each do |r|
+            %tr
+              - Dashboard.ui_editable_attributes.each do |a|
+                - if a == :title or a == :email
+                  %td= link_to r[a], dashboard_url(r)
+                - else
+                  %td
+                    - if r[a]
+                      = r[a]
+                    - else
+                      %span.empty= "Empty field"
+              
+              %td
+                - if url = edit_dashboard_url(r) rescue false
+                  = link_to "Edit", url if can? :update, r
+                - if url = dashboard_url(r, :method => :delete) rescue false
+                  = link_to "Destroy", dashboard_url(r), :confirm => 'Are you sure?', :method => :delete if can? :update, r
+    - else
+      
+      .big-description
+        You have no Boarrds yet.
+      
+.full-width-button
+  = link_to "Create a new Boarrd!", new_dashboard_path
+

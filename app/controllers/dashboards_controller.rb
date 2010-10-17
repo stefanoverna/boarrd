@@ -1,19 +1,41 @@
 require 'widgets'
 
 class DashboardsController < ApplicationController
-  inherit_resources
+  load_and_authorize_resource
+
+  layout :layout_by_resource
+  def layout_by_resource
+    if action_name.to_sym == :show
+      "empty"
+    else
+      "application"
+    end
+  end
 
   before_filter :only => [:show, :destroy, :update] do
     @dashboard = Dashboard.find(params[:id])
   end
 
+  before_filter :only => [:show] do
+    @large = true
+  end
+
   respond_to :html
-  actions :index, :show, :new, :create, :destroy
+
+  def index
+    @dashboards = current_user.dashboards
+  end
 
   def create
     @dashboard = Dashboard.new(params[:dashboard])
     @dashboard.user = current_user
-    create!
+    @dashboard.save
+    redirect_to dashboard_url(@dashboard)
+  end
+
+  def destroy
+    @dashboard.destroy
+    redirect_to dashboards_url
   end
 
   def show
@@ -32,8 +54,6 @@ class DashboardsController < ApplicationController
       :widget_show_path => dashboard_widget_path(@dashboard, ":id"),
       :dashboard_areas_widgets => areas
     }
-
-    show!
   end
 
   def inputs_for

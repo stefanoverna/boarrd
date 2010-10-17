@@ -3,18 +3,13 @@
   %head
     = render :partial => 'layouts/head'
     
-  %body
+  %body{:class => @large ? "large" : "tiny"}
     #hld
-      .wrapper
-        = block :block_class => "small login center" do
-          = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize] do
-            = yield :actions
-          = block_content do
-            = render :partial => 'layouts/flashes'
-            = yield
-
-    %script{:type => "text/javascript"}
-      var rumbleUrl = 'http://railsrumble.com';
+      = render :partial => 'layouts/hud'
       
-    %script{:type => "text/javascript",
-        :src  => "http://blog.railsrumble.com/javascripts/rumble-r10-sash.js"}
+      .wrapper
+        
+        %h1.boardd-logo 
+          %span Bo<span>arr</span>d.
+      
+        = yield

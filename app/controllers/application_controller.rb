@@ -6,18 +6,13 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  layout :layout_by_resource
-  def layout_by_resource
-    if controller_name.to_sym == :dashboards and action_name.to_sym == :show
-      "dashboard"
-    else
-      "application"
-    end
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
     redirect_to new_user_session_url
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    dashboards_url
   end
 
   before_filter do
@@ -39,13 +34,13 @@ class ApplicationController < ActionController::Base
 
         case action_name.to_sym
           when :new
-            "Create a new #{model_name}"
+            "Create a new #{model_name}!"
           when :edit
             "Edit #{model_name}"
           when :show
             "#{model_name} Details"
           when :index
-            "#{model_name.pluralize}"
+            "Your #{model_name.pluralize}"
         end
     end
   end

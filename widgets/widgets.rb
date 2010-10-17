@@ -10,6 +10,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_tic
 require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_multiple")
 require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "news_cycle")
 require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "weather")
+require File.join(File.expand_path(File.dirname(__FILE__)), "widgets", "clock")
 
 module Widgets
 
@@ -19,6 +20,7 @@ module Widgets
       Widgets::NewsCycle,
       Widgets::NewsMultiple,
       Widgets::Weather,
+      Widgets::Clock,
       Widgets::PieChart,
       Widgets::BarChart
     ]

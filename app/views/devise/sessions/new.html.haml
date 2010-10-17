@@ -1,13 +1,17 @@
-= render :partial => 'layouts/form_errors', :locals => {:resource => resource}
 = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  = f.input :email
-  = f.input :password
-  .input
-    = f.submit "Login"
-    - if devise_mapping.rememberable?
-      = f.check_box :remember_me
-      = f.label :remember_me, :class => "inline"
-      
-= content_for :actions do
-  = render :partial => "devise/shared/links"
+
+  = block :block_class => "small login center" do
+    = block_head @title || "%s > %s" % [controller.controller_name.humanize, controller.action_name.humanize] do
+      = render :partial => "devise/shared/links"
+
+    = block_content do
+      = render :partial => 'layouts/flashes'
+      = render :partial => 'layouts/form_errors', :locals => {:resource => resource}
+
+      = f.input :email
+      = f.input :password
+      = f.input :remember_me, :as => :boolean
+
+  = f.submit "Update", :class => "full-width-button"
+
 

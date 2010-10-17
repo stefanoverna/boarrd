@@ -47,7 +47,7 @@ module Widgets
           raise ValidationError, self.errors
         end
 
-        params = if self.token and self.login
+        params = if !self.token.blank? and !self.login.blank?
           params = "?login=#{self.login}&token=#{self.token}"
         else
           ""

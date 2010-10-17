@@ -1,45 +1,58 @@
+.full-width-button
+  :padding-bottom 5px
+  :margin-bottom 25px
+  :clear both
+  :background white url(/images/admin/bnd.gif) bottom center repeat-x
+  +border-radius(5px)
+  +box-shadow(black, 0px, 3px, 6px)
+  :height 54px
+  :line-height 54px
+  :background #323537
+  :border-top 1px solid #44494D
+  +linear-gradient(color-stops(#323537 48%, #2B2E31 49%))
+  :overflow hidden
+  +text-shadow(#111, 0px, 1px, 1px)
+  :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+  :font-size 26px
+  :font-weight normal
+  :color #ddd
+  :text-align center
+  :margin-top 20px
+  :display block
+  :border-width 0px
+  :width 100%
+  
+  a
+    :color #ddd
+    
+    &:hover
+      :color white
+  
 .block
   :padding-bottom 5px
   :margin-bottom 25px
   :clear both
   :background white url(/images/admin/bnd.gif) bottom center repeat-x
-  
-  .bendl
-    :width 5px
-    :height 5px
-    :background url(/images/admin/bendl.gif) bottom left no-repeat
-    :float left
-    
-  .bendr
-    :width 5px
-    :height 5px
-    :background url(/images/admin/bendr.gif) bottom left no-repeat
-    :float right
+  +border-radius(5px)
+  +border-top-radius(8px)
+  +box-shadow(black, 0px, 3px, 6px)
     
   .block_head
     :height 54px
     :line-height 54px
-    :background url(/images/admin/bhead.gif) 0 0 repeat-x
+    :background #323537
+    :border-top 1px solid #44494D
+    +linear-gradient(color-stops(#323537 48%, #2B2E31 49%))
     :overflow hidden
-    
-    .bheadl
-      :width 20px
-      :height 54px
-      :float left
-      :background url(/images/admin/bheadl.gif) top left no-repeat
-      
-    .bheadr
-      :width 20px
-      :height 54px
-      :float right
-      :background url(/images/admin/bheadr.gif) top right no-repeat
+    :padding 0px 20px
+    +border-top-radius(5px)
+    +text-shadow(#111, 0px, 1px, 1px)
       
     h2
-      :font-family "Yanone Kaffeesatz", "Trebuchet MS", Arial, sans-serif
+      :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
       :font-size 26px
       :font-weight normal
-      :color #555
-      :text-shadow 1px 1px 0 #fff
+      :color #ddd
       :float left
       
     ul
@@ -47,7 +60,7 @@
       :text-transform uppercase
       :font-size 11px
       :font-weight bold
-      :text-shadow 1px 1px 0 #fff
+      
       
       li
         :display inline
@@ -60,14 +73,14 @@
           
         a
           :text-decoration none
-          :color #666
+          :color #ddd
           :outline none
           
         &.active a
-          :color #888
+          :color #ccc
           
         a:hover
-          :color #008ee8
+          :color white
           
     form
       :float right
@@ -106,8 +119,7 @@
       :clear none
       
     .block_head
-      :background url(/images/admin/bhead.gif) 0 0 repeat-x
-      
+
     .block_content
       :background #fff
       :border-left 1px solid #ccc

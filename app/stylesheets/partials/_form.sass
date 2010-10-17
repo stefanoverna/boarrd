@@ -1,4 +1,4 @@
-.block form
+form
   div.input
     :overflow hidden
     :clear both
@@ -18,7 +18,7 @@
     :background #fefefe
     :border 1px solid #bbb
     :font-family "Lucida Grande", Verdana, sans-serif
-    :font-size 14px
+    :font-size 20px
     :color #333
     :padding 7px
     :-webkit-border-radius 3px
@@ -63,63 +63,6 @@
     input
       :float left
       :clear left
-  select.stylable
-    :width 245px
-    :height 18px
-    :margin-right 20px
-    :cursor pointer
-  .cmf-skinned-select
-    :padding 7px
-    :display block
-    :margin-right 20px
-    :border 1px solid #bbb
-    :-webkit-border-radius 3px
-    :-moz-border-radius 3px
-    :border-radius 3px
-    :background url('/images/admin/sdd.jpg') center right no-repeat
-    &:hover
-      :background url('/images/admin/sdd_.jpg') center right no-repeat
-  div.cmf-skinned-text
-    :padding 5px 7px
-    :font-family "Lucida Grande", Verdana, sans-serif
-    :font-size 14px
-    :color #333
-  .date
-    +clearfix
-    .cmf-skinned-select
-      :float left
-  .fileupload
-    :position relative
-    #uploadmsg
-      :display block
-      :position absolute
-      :top 20px
-      :left 350px
-      :height 30px
-      :line-height 30px
-      :margin-left 5px
-      :font-size 11px
-      &.loading
-        :background url(/images/admin/ajax-loader.gif) center left no-repeat
-        :width 30px
-        :padding-left 20px
-  input.file
-    :width 250px
-    :height 20px
-    :background #fefefe
-    :border 1px solid #bbb
-    :border-right 0
-    :font-family "Lucida Grande", Verdana, sans-serif
-    :font-size 14px
-    :color #333
-    :padding 4px
-    :-webkit-border-top-left-radius 3px
-    :-webkit-border-bottom-left-radius 3px
-    :-moz-border-radius-topleft 3px
-    :-moz-border-radius-bottomleft 3px
-    :border-top-left-radius 3px
-    :border-bottom-left-radius 3px
-    :outline none
   .error
     :padding-left 10px
     :font-size 11px
@@ -127,49 +70,3 @@
     :color #757575
     :vertical-align middle
     :color #e3302c
-  input[type="submit"]
-    :height 30px
-    :line-height 30px
-    :width 165px
-    :background url(/images/admin/btnb.gif) top center no-repeat
-    :border 0
-    :font-family "Yanone Kaffeesatz", "Trebuchet MS", Arial, sans-serif
-    :font-size 18px
-    :font-weight normal
-    :text-transform uppercase
-    :color #fff
-    :text-shadow 1px 1px 0 #0a5482
-    :cursor pointer
-    :margin-right 10px
-    :vertical-align middle
-    &:hover
-      :background url(/images/admin/btnb_.gif) top center no-repeat
-    &.normal
-      :width 85px
-      :background url(/images/admin/btns.gif) top center no-repeat
-      &:hover
-        :background url(/images/admin/btns_.gif) top center no-repeat
-        :text-shadow 1px 1px 0 #b55f10
-    &.tiny
-      :width 105px
-      :height 20px
-      :line-height 20px
-      :padding-bottom 2px
-      :vertical-align middle
-      :font-family "Lucida Grande", Arial, Helvetica, sans-serif
-      :font-size 10px
-      :font-weight bold
-      :text-transform none
-      :background url(/images/admin/tiny.gif) top center no-repeat
-      &:hover
-        :background url(/images/admin/tiny_.gif) top center no-repeat
-    &.mid
-      :width 115px
-      :background url(/images/admin/btnm.gif) top center no-repeat
-      &:hover
-        :background url(/images/admin/btnm_.gif) top center no-repeat
-      
-
-/* Custom form select element
-
-/* Custom file input
