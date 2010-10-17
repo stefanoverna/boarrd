@@ -7,11 +7,12 @@ var $widget_settings = $("<%= raw escape_javascript( render :partial => "widgets
 <%- widget.input_class.settings.each do |s| %>
 $widget_settings.find("#widget_settings_<%= s.config.name %>").val("<%= raw escape_javascript(widget.settings[s.config.name]) %>")
 <%- end %>
+$widget_settings.find("#widget_settings_title").val("<%= widget.title %>");
 widgetObj = widget("<%= widget.guid %>");
 widgetObj.setWidgetContent($widget_content);
 widgetObj.setWidgetSettings($widget_settings);
 widgetObj.setWidgetType("<%= widget.widget_type %> <%= widget.input_type %>")
-widgetObj.setWidgetTitle("<%= widget.widget_class.title %>");
+widgetObj.setWidgetTitle("<%= widget.title %>");
 widgetObj.setInputTitle("<%= widget.input_class.title %>");
 widgetObj.created();
 <%= render :partial => "widgets/#{widget.dashed_widget_type}/javascript.js.erb", :locals => {:widget => widget, :widget_data => widget_data} %>

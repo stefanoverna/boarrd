@@ -26,8 +26,7 @@ module Widgets
       Widgets::Clock,
       Widgets::PieChart,
       Widgets::BarChart,
-      Widgets::FlickrWidget,
-      Widgets::Countdown
+      Widgets::FlickrWidget
     ]
   end
 

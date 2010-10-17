@@ -33,6 +33,10 @@ class Widget < ActiveRecord::Base
     valid? and input_class.new(settings).valid?
   end
 
+  def title
+    super || widget_class.title
+  end
+
   def settings
     super || {}
   end
