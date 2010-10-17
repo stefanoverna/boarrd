@@ -42,19 +42,12 @@ class WidgetsController < ApplicationController
     if @widget.save and @widget.all_valid?
       render_view
     else
-      render :template => "widgets/errors"
+      render :template => "widgets/settings_errors"
     end
   end
 
   def render_view
-
-    @widget_data = nil
-
-    begin
-      @widget_data = @widget.widget_data
-    rescue Widgets::ValidationError
-    end
-
+    @widget_data = @widget.widget_data
     render :template => "widgets/view"
   end
 

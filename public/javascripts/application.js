@@ -16,41 +16,58 @@ jQuery(document).ready(function($) {
     return null;
   }
 
-  function Widget(area, guid, start_mode) {
-    this.init(area, guid, start_mode);
+  function Widget(area, guid, is_new) {
+    this.init(area, guid, is_new);
   }
 
   Widget.prototype = {
-    init: function(area, guid, start_mode) {
+    init: function(area, guid, is_new) {
       var self = this;
       this._dashboard_data = $("#dashboard").metadata({type: "elem", name: "script"});
       this._guid = guid;
       this._area = area;
-      this._$dom = $("#dashboard .widget-template > .widget-box").clone();
-      this._$dom.insertBefore("#"+area+" .add-new-widget");
-      this._$dom.find(".new-mode #widget_area").val(area);
-      this._$dom.find(".new-mode #widget_guid").val(guid);
-      this._$dom.find(".new-mode #widget_widget_type").change(function() {
-        var widget_type = $(this).val();
-        $.ajax({
-          url: self._dashboard_data.input_for_path.replace(":widget_type", widget_type),
-          success: function(dom) {
-            if (self._$widget_input_field) {
-              self._$widget_input_field.remove();
+
+      if (is_new) {
+        this._$newdom = $("#dashboard .widget-template > .widget-box .new-mode").clone();
+        this._$newdom.find("#widget_area").val(area);
+        this._$newdom.find("#widget_guid").val(guid);
+
+        $.facebox(this._$newdom);
+
+        // widget type select --> show input type select
+        this._$newdom.find("#widget_widget_type").change(function() {
+          var widget_type = $(this).val();
+          $.ajax({
+            url: self._dashboard_data.input_for_path.replace(":widget_type", widget_type),
+            success: function(dom) {
+              if (self._$widget_input_field) {
+                self._$widget_input_field.remove();
+              }
+              self._$widget_input_field = $(dom).insertBefore(self._$newdom.find("#widget_area"));
             }
-            self._$widget_input_field = $(dom).insertBefore(self._$dom.find(".new-mode #widget_area"));
-          }
+          });
         });
-      });
+      }
+
+    },
+    created: function() {
+      var self = this;
+
+      $("#facebox .close").click();
+
+      if (this._$dom) return;
+
+      this._$dom = $("#dashboard .widget-template > .widget-box").clone().insertBefore("#"+this._area+" .add-new-widget");
+
+      // settings button
       this._$dom.find(".widget-head .actions .settings a").click(function() {
-        if (self.mode() == "edit") {
-          self.setMode("normal");
-        } else {
-          self.setMode("edit");
-        }
+        self.showSettings();
         return false;
       });
+
+      // remove button
       this._$dom.find(".widget-head .actions .remove a").click(function() {
+        if (!confirm("Do you really want to remove this widget?")) return;
         $.ajax({
           url: self._dashboard_data.widget_show_path.replace(":id", self._guid),
           dataType: 'script',
@@ -58,24 +75,12 @@ jQuery(document).ready(function($) {
         });
         return false;
       });
-
-      if (start_mode == 'new') {
-        this.setMode('new');
-      } else {
-        this.setMode('normal');
-      }
-
-    },
-    setMode: function(mode) {
-      this._$dom.find(".widget-content .mode").hide();
-      this._$dom.find(".widget-content .mode."+mode+"-mode").show();
-      this._mode = mode;
-    },
-    mode: function() {
-      return this._mode;
     },
     guid: function() {
       return this._guid;
+    },
+    showSettings: function() {
+      $.facebox(this._$dom.find(".edit-mode"));
     },
     setWidgetTitle: function(title) {
       this._$dom.find(".widget-head .title").text(title);
@@ -107,7 +112,7 @@ jQuery(document).ready(function($) {
     // TODO: aggiungere i widget esistenti
     $.each(data.dashboard_areas_widgets, function(area, guids) {
       $.each(guids, function() {
-        window.widgets.push(new Widget(area, this, 'normal'));
+        window.widgets.push(new Widget(area, this, false));
       });
     });
 
@@ -117,7 +122,7 @@ jQuery(document).ready(function($) {
       var $area = $(this);
       $area.find(".add-new-widget input").click(function() {
         var guid = GUID();
-        window.widgets.push(new Widget($area.attr("id"), guid, 'new'));
+        window.widgets.push(new Widget($area.attr("id"), guid, true));
       });
     });
 

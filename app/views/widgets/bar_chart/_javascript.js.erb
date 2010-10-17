@@ -3,7 +3,7 @@ $widget_content.each(function() {
     var $this = $(this);
     var data = $this.metadata({type: "html5", name: "data-chart"});
 
-    var g = new Bluff.Bar($this.find("canvas")[0], "460x400");
+    var g = new Bluff.Bar($this.find("canvas")[0], "460x300");
 
     g.set_theme({
         colors: ['#5C5C5C', '#BEBEBE', '#626262', '#E5E5E5', '#727272'],

@@ -1,0 +1,1 @@
+alert("<%= raw escape_javascript( @widget.all_errors.full_messages.map{|m| "* #{m}\n"}.join )%>")

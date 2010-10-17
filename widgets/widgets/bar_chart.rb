@@ -26,10 +26,18 @@ module Widgets
           ""
         end
 
-        project_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/repos/show/#{self.username}#{params}").read)
+        begin
+          project_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/repos/show/#{self.username}#{params}").read)
+        rescue
+          raise ValidationError, "Invalid data!"
+        end
 
         self.slices = project_list["repositories"][0..4].map do |repo|
-          open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{repo["name"]}/open#{params}").read)
+          begin
+            open_issue_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/issues/list/#{self.username}/#{repo["name"]}/open#{params}").read)
+          rescue
+            raise ValidationError, "Invalid data!"
+          end
 
           open_slice = PieChart::Slice.new
           open_slice.label = repo["name"]
@@ -88,7 +96,11 @@ module Widgets
           ""
         end
 
-        commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}#{params}").read)
+        begin
+          commit_list = ActiveSupport::JSON.decode(open("http://github.com/api/v2/json/commits/list/#{self.username}/#{self.repository}/#{self.branch}#{params}").read)
+        rescue
+          raise ValidationError, "Invalid data!"
+        end
 
         commits_per_user = {}
         commit_list["commits"].entries.each do |commit|
