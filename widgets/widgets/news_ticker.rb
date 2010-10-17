@@ -263,8 +263,8 @@ module Widgets
 
       setting :url do
         input :as => :url
-        label "Feed URL"
-        hint "The feed you want to visualize"
+        label "Facebook Feed"
+        hint "Your Facebook Profile Feed"
         default_value "http://"
         is_required
         has_format :with => URI::regexp(["http", "https"])
@@ -276,7 +276,9 @@ module Widgets
           raise ValidationError, self.errors
         end
 
-        feed = FeedNormalizer::FeedNormalizer.parse open(self.url)
+        agent = WWW::Mechanize.new
+        page = agent.get self.url
+        feed = FeedNormalizer::FeedNormalizer.parse page.body
 
         raise ValidationError, "Invalid data!" if feed.nil?
 
@@ -284,7 +286,7 @@ module Widgets
         feed.entries[0..6].each do |entry|
           item = NewsItem.new
           item.primary_text = entry.title
-          item.secondary_text = entry.content
+          item.secondary_text = entry.authors[0] + " says " + entry.content
           item.optional_text = entry.date_published
           item.link = entry.url
           self.items << item

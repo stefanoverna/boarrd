@@ -24,11 +24,13 @@ module Widgets
 
       setting :user do
         label "User"
+        hint "The user you want to follow"
         input :as => :string
       end
 
       setting :tag do
         label "Tag"
+        hint "Space separated tags (if user is selected you have an AND)"
         input :as => :string
       end
       
@@ -54,7 +56,7 @@ module Widgets
             photos = flickrApi.photos
           end
           
-          photos[0..9].each do |photo|
+          photos[0..19].each do |photo|
             item = FlickrItem.new
             
             item.image = "http://farm" + photo['farm'] + ".static.flickr.com/" + photo['server'] + "/" + photo['id'] + "_" + photo['secret'] + ".jpg"

@@ -54,7 +54,7 @@
 			// Create Yahoo Weather feed API address
       var location = "select id from xml where url=\"http://xoap.weather.com/search/search?where="+ locationid +"\" and itemPath=\"search.loc\" LIMIT 1";
 			var query = "select * from weather.forecast where location in ("+ location +") and u='"+ options.unit +"'";
-			var api = 'http://query.yahooapis.com/v1/public/yql?q='+ encodeURIComponent(query) +'&rnd='+ now.getFullYear() + now.getMonth() + now.getDay() + now.getHours() +'&format=json&callback=?';
+			var api = 'http://query.yahooapis.com/v1/public/yql?q='+ encodeURIComponent(query) +'&rnd='+ now.getFullYear() + now.getMonth() + now.getDay() + now.getHours() +'&format=json';
 
 			// Send request
 			//$.getJSON(api, function(data) {
@@ -76,7 +76,6 @@
 								_callback(e, data.query.results.channel[i], options);
 							}
 						} else {
-
 							// Single location only
 							_callback(e, data.query.results.channel, options);
 						}
@@ -98,6 +97,7 @@
 
 		// Format feed items
 		var wd = feed.wind.direction;
+		
 		if (wd>=348.75&&wd<=360){wd="N"};if(wd>=0&&wd<11.25){wd="N"};if(wd>=11.25&&wd<33.75){wd="NNE"};if(wd>=33.75&&wd<56.25){wd="NE"};if(wd>=56.25&&wd<78.75){wd="ENE"};if(wd>=78.75&&wd<101.25){wd="E"};if(wd>=101.25&&wd<123.75){wd="ESE"};if(wd>=123.75&&wd<146.25){wd="SE"};if(wd>=146.25&&wd<168.75){wd="SSE"};if(wd>=168.75&&wd<191.25){wd="S"};if(wd>=191.25 && wd<213.75){wd="SSW"};if(wd>=213.75&&wd<236.25){wd="SW"};if(wd>=236.25&&wd<258.75){wd="WSW"};if(wd>=258.75 && wd<281.25){wd="W"};if(wd>=281.25&&wd<303.75){wd="WNW"};if(wd>=303.75&&wd<326.25){wd="NW"};if(wd>=326.25&&wd<348.75){wd="NNW"};
 		var wf = feed.item.forecast[0];
 		
