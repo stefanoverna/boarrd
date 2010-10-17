@@ -27,7 +27,6 @@ class WidgetsController < ApplicationController
     @widget.area_position = maximum_position ? maximum_position + 1 : 0
 
     if @widget.save
-
       render_view
     else
       render :template => "widgets/errors"
