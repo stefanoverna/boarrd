@@ -3,7 +3,7 @@ $widget_content.each(function() {
 
   $this.innerfade({
     speed: 1000,
-    timeout: 5000,
+    timeout: 30000 + Math.random() * 1000,
     type: 'sequence'
   });
 
