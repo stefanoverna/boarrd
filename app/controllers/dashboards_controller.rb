@@ -32,6 +32,11 @@ class DashboardsController < ApplicationController
     @dashboard.save
   end
 
+  def destroy
+    @dashboard.destroy
+    redirect_to dashboards_url
+  end
+
   def show
 
     areas = {}
