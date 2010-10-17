@@ -23,6 +23,7 @@ module Widgets
 
       setting :location do
         label "Location"
+        hint "Input a place as specific as possible (e.g. Turin, Italy)"
         input :as => :string
         is_required
       end

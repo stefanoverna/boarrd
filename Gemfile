@@ -20,6 +20,7 @@ gem "sanitize"
 gem "paperclip"
 gem "roxml"
 gem "twitter"
+gem "mechanize"
 gem 'agiley-flickr', :git => 'http://github.com/Agiley/flickr.git', :branch => 'master', :require => 'flickr'
 gem "jammit", :git => "http://github.com/documentcloud/jammit.git"
 

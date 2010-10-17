@@ -3,7 +3,7 @@ module Widgets
 
     self.inputs = [ Widgets::NewsTicker::FeedInput ]
     self.slug = :"news-cycle"
-    self.title = "Cycling Widget"
+    self.title = "Auto cycle"
 
   end
 end
