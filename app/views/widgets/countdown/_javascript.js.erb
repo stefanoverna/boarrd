@@ -1,0 +1,15 @@
+$widget_content.each(function() {
+  var $this = $(this);
+  
+  var countdownDate = $(this).attr("datetime");
+  $(this).countDown({
+					targetDate: {
+						'day': 		10,
+						'month': 	1,
+						'year': 	2011,
+						'hour': 	11,
+						'min': 		0,
+						'sec': 		0
+					}
+				});
+});
