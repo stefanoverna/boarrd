@@ -29,8 +29,11 @@ class DashboardsController < ApplicationController
   def create
     @dashboard = Dashboard.new(params[:dashboard])
     @dashboard.user = current_user
-    @dashboard.save
-    redirect_to dashboard_url(@dashboard)
+    if @dashboard.save
+      redirect_to dashboard_url(@dashboard)
+    else
+      render "new"
+    end
   end
 
   def reorder_widgets
