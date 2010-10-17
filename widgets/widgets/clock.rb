@@ -13,7 +13,7 @@ module Widgets
 
     self.inputs = [ Widgets::Clock::Input ]
     self.slug = :"clock"
-    self.title = "Clock Widget"
+    self.title = "Clock"
 
   end
 end

@@ -74,6 +74,7 @@ module Widgets
           item.primary_text = issue["title"]
           item.optional_text = "by %s" % issue["user"]
           item.secondary_text = issue["body"]
+          item.link = "http://github.com/#{self.username}/#{self.repository}/issues/" + issue["number"].to_s
           self.items << item
         end
 
@@ -180,7 +181,7 @@ module Widgets
 
       end
 
-      self.title = "Next Calendar Events"
+      self.title = "Calendar Events"
       self.slug = :"calendar-events"
 
     end
@@ -218,7 +219,7 @@ module Widgets
         end
       end
 
-      self.title = "Feed Input"
+      self.title = "Feed"
       self.slug = :"feed-input"
 
     end
@@ -286,15 +287,15 @@ module Widgets
         feed.entries[0..6].each do |entry|
           item = NewsItem.new
           item.primary_text = entry.title
-          item.secondary_text = entry.authors[0] + " says " + entry.content
-          item.optional_text = entry.date_published
+          item.secondary_text = entry.content
+          item.optional_text = "by " + entry.authors[0]
           item.link = entry.url
           self.items << item
         end
 
       end
 
-      self.title = "Facebook Input"
+      self.title = "Facebook"
       self.slug = :"facebook-input"
 
     end
