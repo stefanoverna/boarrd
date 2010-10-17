@@ -34,11 +34,13 @@ class Widget < ActiveRecord::Base
 
   def all_errors
     if input_class.nil?
-      super
+      valid?
+      errors
     else
       input = input_class.new(settings)
       input.valid?
-      super.merge(input.errors)
+      valid?
+      errors.merge(input.errors)
     end
   end
 
@@ -46,12 +48,16 @@ class Widget < ActiveRecord::Base
     return nil if input_class.nil?
     request = CacheRequest.find_by_key(cache_key)
     if request.nil? or request.updated_at < 5.minutes.ago
-      input = input_class.new(settings)
-      input.refresh
-      request = CacheRequest.find_or_initialize_by_key(cache_key)
-      request.value = input.to_xml.serialize
-      request.save
-      input
+      begin
+        input = input_class.new(settings)
+        input.refresh
+        request = CacheRequest.find_or_initialize_by_key(cache_key)
+        request.value = input.to_xml.serialize
+        request.save
+        input
+      rescue Widgets::ValidationError
+        nil
+      end
     else
       input_class.from_xml(request.value)
     end
