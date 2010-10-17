@@ -1,18 +1,19 @@
-.welcome-block
-  .left
-    = image_tag "/images/screenshot.png"
-  .right
+.wrapper
+  .welcome-block
+    .left
+      = image_tag "/images/screenshot.png"
+    .right
   
-    %h1.boardd-logo 
-      %span Bo<span>arr</span>d.
+      %h1.boardd-logo 
+        %span Bo<span>arr</span>d.
       
-    = block :block_class => "small login center" do
-      = block_head "Ahoy, Boarrd!" do
-        = yield :actions
-      = block_content do
-        .big-description
-          %p Boarrd is a hosted, higly customizable, do-it-yourself status board giving you a quick & fancy look at all the indicators that matter to you.
-          %p Create new visualization widgets. Attach them custom data input. Become wet.
+      = block :block_class => "small login center" do
+        = block_head "Ahoy, Boarrd!" do
+          = yield :actions
+        = block_content do
+          .big-description
+            %p Boarrd is a hosted, higly customizable, do-it-yourself status board giving you a quick & fancy look at all the indicators that matter to you.
+            %p Create new visualization widgets. Attach them custom data input. Become wet.
         
-    .full-width-button
-      = link_to "Create a new Boarrd!", new_dashboard_path
+      .full-width-button
+        = link_to "Create a new Boarrd!", new_dashboard_path

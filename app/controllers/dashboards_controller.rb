@@ -46,6 +46,26 @@ class DashboardsController < ApplicationController
     redirect_to dashboards_url
   end
 
+  def edit
+
+  end
+
+  def update
+    @dashboard = Dashboard.find(params[:id])
+
+    if @dashboard.update_attributes(params[:dashboard])
+      @dashboard.widgets.each do |widget|
+        if widget.area.match(/[0-9]$/)[0].to_i > @dashboard.columns_count
+          widget.update_attribute(:area, "area%d" % @dashboard.columns_count)
+        end
+      end
+      redirect_to dashboard_url(@dashboard)
+    else
+      render "edit"
+    end
+  end
+
+
   def show
 
     areas = {}

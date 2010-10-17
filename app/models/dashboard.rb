@@ -1,9 +1,11 @@
 class Dashboard < ActiveRecord::Base
   belongs_to :user
-  has_many :widgets
+  has_many :widgets, :dependent => :destroy
 
   validates_presence_of :user
   validates_presence_of :title
+  validates_presence_of :columns_count
+
   normalize_attributes :title
 
   has_friendly_id :title, :use_slug => true
