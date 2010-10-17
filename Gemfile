@@ -19,6 +19,8 @@ gem "friendly_id", "~> 3.1"
 gem "sanitize"
 gem "paperclip"
 gem "roxml"
+gem "twitter"
+gem "agiley-flickr", :git => "http://github.com/Agiley/flickr.git"
 gem "jammit", :git => "http://github.com/documentcloud/jammit.git"
 
 gem "feed-normalizer"
