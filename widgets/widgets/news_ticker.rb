@@ -176,6 +176,7 @@ module Widgets
           item = NewsItem.new
           item.primary_text = event.summary
           item.optional_text = event.dtstart
+          item.secondary_text = event.dtstart
           self.items << item
         end
 
