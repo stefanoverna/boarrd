@@ -1,27 +1,21 @@
 module Widgets
   class Countdown < BaseWidget
 
-    class CountdownItem
-      include ROXML
-
-      xml_accessor :datetime
-    end
-
     class Input < Widgets::Input
 
-      xml_accessor :item, :as => CountdownItem
+      xml_accessor :countdown_datetime, :as => DateTime
 
       def refresh
         self.items = []
       end
 
     end
-    
+
     class CountdownDate < Input
       include Widgets::Configurable
 
-      setting :datetime do
-        label "date and time"
+      setting :countdown_datetime do
+        label "Countdown"
         input :as => :datetime
         is_required
       end
@@ -30,9 +24,6 @@ module Widgets
         unless self.valid?
           raise ValidationError, self.errors
         end
-        
-        self.item = CountdownItem.new
-        self.item.date = self.date
       end
 
       self.title = "Countdown"

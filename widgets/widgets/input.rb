@@ -19,11 +19,11 @@ module Widgets
         send(
           "#{param}=",
           DateTime.civil(
-            params[param+"(1i)"],
-            params[param+"(2i)"],
-            params[param+"(3i)"],
-            params[param+"(4i)"],
-            params[param+"(5i)"]
+            params[param+"(1i)"].to_i,
+            params[param+"(2i)"].to_i,
+            params[param+"(3i)"].to_i,
+            params[param+"(4i)"].to_i,
+            params[param+"(5i)"].to_i
           )
         )
       end
