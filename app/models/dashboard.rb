@@ -4,6 +4,8 @@ class Dashboard < ActiveRecord::Base
 
   validates_presence_of :user
   validates_presence_of :title
+  validates_presence_of :columns_count
+
   normalize_attributes :title
 
   has_friendly_id :title, :use_slug => true

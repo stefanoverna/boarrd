@@ -5,12 +5,12 @@ class Ability
     if user
 
       can [:index, :create, :new], Dashboard
-      can [:destroy, :show, :edit, :update], Dashboard do |dashboard|
+      can [:destroy, :show, :edit, :update, :reorder_widgets], Dashboard do |dashboard|
         dashboard.user == user
       end
 
       can :create, Widget
-      can [:update, :destroy], Widget do |widget|
+      can [:update, :destroy, :settings], Widget do |widget|
         widget.dashboard.user == user
       end
 
