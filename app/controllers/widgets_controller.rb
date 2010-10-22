@@ -21,6 +21,13 @@ class WidgetsController < ApplicationController
   def create
 
     @widget = Widget.new(params[:widget])
+
+    if @dashboard.widgets.count >= 9
+      flash[:alert] = "Sorry, you cannot create more than 9 widgets per dashboard!"
+      render :template => "widgets/errors"
+      return
+    end
+
     @widget.dashboard = @dashboard
 
     maximum_position = Widget.where(:dashboard_id => @dashboard, :area => @widget.area).maximum("area_position")

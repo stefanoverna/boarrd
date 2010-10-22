@@ -27,6 +27,12 @@ class DashboardsController < ApplicationController
   end
 
   def create
+    if current_user.dashboards.count >= 6
+      flash[:alert] = "Sorry, you cannot create more than 6 dashboards!"
+      @dashboards = current_user.dashboards
+      render "index"
+      return
+    end
     @dashboard = Dashboard.new(params[:dashboard])
     @dashboard.user = current_user
     if @dashboard.save
