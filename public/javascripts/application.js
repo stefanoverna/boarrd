@@ -130,7 +130,7 @@ jQuery(document).ready(function($) {
 
     $(".add-new-widget").hide();
     var old_title = $(".dashboard-title").text();
-    $(".dashboard-title").text("Your Boarrd is loading.. Please wait..");
+    $(".dashboard-title").text("Boarrd is loading.. Please wait..");
 
     $.ajax({
       url: data.load_all_widgets_path,
