@@ -22,9 +22,8 @@ javascripts:
   - public/javascripts/jquery.innerfade.js
   - public/javascripts/jquery.zweatherfeed.js
   - public/javascripts/jquery.jclock.js
-  - public/javascripts/application.js
   - public/javascripts/jquery.mousewheel.js
   - public/javascripts/jquery.facebox.js
   - public/javascripts/jquery.jscrollpane.js
-  - public/javascripts/jquery.lwtCountdown.js
+  - public/javascripts/application.js
 
