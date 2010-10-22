@@ -16,4 +16,4 @@
               = time_distance(item.optional_text)
             %br
           - if item.secondary_text
-            != sanitize(item.secondary_text)
+            != sanitize(item.secondary_text.to_s)
