@@ -1,0 +1,3 @@
+<% @dashboard.widgets.order("area, area_position").each do |widget| %>
+  <%= render :partial => "widgets/view.js.erb", :locals => {:widget => widget, :widget_data => widget.widget_data} %>
+<% end %>

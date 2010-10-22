@@ -10,10 +10,7 @@
             != item.primary_text
         %p.details
           - if item.optional_text
-            - if item.optional_text.is_a? String
-              != sanitize(item.optional_text)
-            - else
-              = time_distance(item.optional_text)
+            = render_text(item.optional_text)
             %br
           - if item.secondary_text
-            != sanitize(item.secondary_text.to_s)
+            != sanitize(render_text(item.secondary_text))

@@ -10,13 +10,6 @@
               = item.primary_text
           
         - if item.optional_text
-          %span.optional_text
-            - if !item.optional_text.is_a? String
-              - if item.optional_text < Date.today
-                = distance_of_time_in_words(Time.now, item.optional_text) + " ago"
-              - else
-                = "in " + distance_of_time_in_words(Time.now, item.optional_text)
-            - else
-              = item.optional_text
+          %span.optional_text= render_text(item.optional_text)
       - if item.secondary_text
-        %p.secondary_text!= snippet(sanitize(item.secondary_text.to_s), 30)
+        %p.secondary_text!= snippet(sanitize(render_text(item.secondary_text)), 30)

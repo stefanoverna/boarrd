@@ -3,7 +3,7 @@ Boarrd::Application.routes.draw do
   root :to => "welcome#index"
   resources :dashboards do
     member do
-      get :reorder_widgets
+      get :reorder_widgets, :load_all_widgets
     end
     resources :widgets, :only => [:create, :update, :destroy] do
       member do

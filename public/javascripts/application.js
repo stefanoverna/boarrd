@@ -128,7 +128,22 @@ jQuery(document).ready(function($) {
       });
     });
 
-    firstLoad();
+    $(".add-new-widget").hide();
+    var old_title = $(".dashboard-title").text();
+    $(".dashboard-title").text("Your Boarrd is loading.. Please wait..");
+
+    $.ajax({
+      url: data.load_all_widgets_path,
+      dataType: 'script',
+      type: "get",
+      success: function() {
+        $(".add-new-widget").show();
+        $(".dashboard-title").text(old_title);
+      },
+      error: function() {
+        alert("Something went badly wrong. It is probably due to LifeHacker DDOS.. Please, try to reload the page, and sorry about that!");
+      }
+    });
 
     var $columns = $dashboard.find(".column .column-inner");
 

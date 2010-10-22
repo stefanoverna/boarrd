@@ -8,7 +8,7 @@ class Ability
       can :create, Widget
     end
 
-    can [:destroy, :show, :edit, :update, :reorder_widgets], Dashboard do |dashboard|
+    can [:destroy, :show, :load_all_widgets, :edit, :update, :reorder_widgets], Dashboard do |dashboard|
       dashboard.user == user or dashboard.public
     end
 

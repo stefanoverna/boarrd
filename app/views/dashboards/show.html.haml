@@ -10,12 +10,7 @@
  
   %script{:type => "text/json"}
     != @dashboard_settings.to_json
-  
-  %script{:type => "text/javascript"}
-    function firstLoad() {
-    - @dashboard.widgets.order("area, area_position").each do |widget|
-      != render :partial => "widgets/view.js.erb", :locals => {:widget => widget, :widget_data => widget.widget_data}
-    }
+    
   .widget-template
     .widget-box
       .widget-head

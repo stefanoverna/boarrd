@@ -37,4 +37,12 @@ module ApplicationHelper
     end
   end
 
+  def render_text(text)
+    if !text.is_a? String
+      time_distance(text)
+    else
+      text
+    end
+  end
+
 end

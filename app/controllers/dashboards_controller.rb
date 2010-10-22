@@ -12,7 +12,7 @@ class DashboardsController < ApplicationController
     end
   end
 
-  before_filter :only => [:show, :destroy, :update] do
+  before_filter :only => [:show, :destroy, :update, :load_all_widgets] do
     @dashboard = Dashboard.find(params[:id])
   end
 
@@ -48,6 +48,10 @@ class DashboardsController < ApplicationController
       Widget.find(widget_settings["guid"]).update_attributes({:area_position => widget_settings["area_position"], :area => widget_settings["area"]})
     end
     render :text => "true"
+  end
+
+  def load_all_widgets
+
   end
 
   def destroy
@@ -88,6 +92,7 @@ class DashboardsController < ApplicationController
     @dashboard_settings = {
       :dashboard_path => dashboard_path(@dashboard),
       :widget_show_path => dashboard_widget_path(@dashboard, ":id"),
+      :load_all_widgets_path => load_all_widgets_dashboard_path(@dashboard),
       :reorder_widgets_path => reorder_widgets_dashboard_path(@dashboard),
       :editable => @dashboard.user == current_user,
       :dashboard_areas_widgets => areas
