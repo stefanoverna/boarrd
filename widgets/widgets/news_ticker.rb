@@ -175,7 +175,6 @@ module Widgets
         cal.events.sort_by(&:dtstart).delete_if{ |event| event.dtend < Date.today }[0..9].each do |event|
           item = NewsItem.new
           item.primary_text = event.summary
-          item.optional_text = event.dtstart
           item.secondary_text = event.dtstart
           self.items << item
         end
@@ -290,7 +289,7 @@ module Widgets
           item.primary_text = entry.title
           item.secondary_text = entry.content
           item.optional_text = "by " + entry.authors[0]
-          
+
           url = entry.url
           if !url.include? "http"
             url = "http://facebook.com" + url

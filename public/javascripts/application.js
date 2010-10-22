@@ -210,13 +210,15 @@ jQuery.fn.headlines = function(options) {
     var old_width = $scrollable_container.css("width");
     var old_height = $scrollable_container.css("height");
     $scrollable_container.css({width: "10000px"});
-    var width = $scrollable_element.width();
+    var width = $scrollable_element.width() + 5;
     $scrollable_container.css({width: old_width, height: old_height, position: "relative"});
+
+    if (old_width > width) return;
 
     $scrollable_element.remove();
     var elements = [];
     for (var i=0; i<3; i++) {
-      elements.push($scrollable_element.clone().appendTo($scrollable_container).css({width: width, position: "absolute", top: "0px", display: "block"}).css("left", (width + 20) * i));
+      elements.push($scrollable_element.clone().appendTo($scrollable_container).css({width: width, position: "absolute", top: "0px", display: "block"}).css("left", (width + 15) * i));
     }
 
     lines.push({
@@ -236,12 +238,12 @@ jQuery.fn.headlines = function(options) {
         element = lines[line].els[i];
         width = lines[line].width;
         var left = parseInt(element.css("left"));
-        if (left <= -(width + 20 - 20)) {
+        if (left <= -(width + 15 - 20)) {
           var next_el = i - 1;
           if (next_el < 0) {
             next_el += 3;
           }
-          element.css("left", parseInt(lines[line].els[next_el].css("left")) + width + 20);
+          element.css("left", parseInt(lines[line].els[next_el].css("left")) + width + 15);
           if (++line >= lines.length) {
             line = 0;
           }
