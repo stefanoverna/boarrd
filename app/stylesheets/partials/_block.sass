@@ -9,10 +9,10 @@
   :line-height 54px
   :background #323537
   :border-top 1px solid #44494D
-  +linear-gradient(color-stops(#323537 48%, #2B2E31 49%))
+  +linear-gradient(color-stops(#0088BE 48%, #0079B6 49%))
   :overflow hidden
-  +text-shadow(#111, 0px, 1px, 1px)
-  :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+  +text-shadow(#111, 0px, -1px, 0px)
+  +museo
   :font-size 26px
   :font-weight normal
   :color #ddd
@@ -21,6 +21,9 @@
   :border-width 0px
   :width 100%
   :cursor pointer
+  
+  &:hover
+    +linear-gradient(color-stops(#0092CD 48%, #0080C0 49%))
   
   a
     :color #ddd
@@ -53,7 +56,7 @@
     +text-shadow(#111, 0px, 1px, 1px)
       
     h2
-      :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+      +museo
       :font-size 26px
       :font-weight normal
       :color #ddd

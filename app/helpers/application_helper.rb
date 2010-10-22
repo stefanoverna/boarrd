@@ -29,4 +29,12 @@ module ApplicationHelper
     Sanitize.clean(text, :elements => [])
   end
 
+  def time_distance(date)
+    if date < Date.today
+      distance_of_time_in_words(Time.now, date) + " ago"
+    else
+      "in " + distance_of_time_in_words(Time.now, date)
+    end
+  end
+
 end

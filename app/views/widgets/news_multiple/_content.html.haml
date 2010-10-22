@@ -1,13 +1,13 @@
-.scrollable
 %ul.items
   - widget_data.items.each do |item|
     %li
       .header
         %h3.primary_text
-          - if item.link
-            = link_to item.primary_text[0..30], item.link
-          - else
-            = item.primary_text[0..30]
+          %span.inner
+            - if item.link
+              = link_to item.primary_text, item.link
+            - else
+              = item.primary_text
           
         - if item.optional_text
           %span.optional_text
@@ -19,4 +19,4 @@
             - else
               = item.optional_text
       - if item.secondary_text
-        %p.secondary_text= snippet(sanitize(item.secondary_text.to_s), 30)
+        %p.secondary_text!= snippet(sanitize(item.secondary_text.to_s), 30)

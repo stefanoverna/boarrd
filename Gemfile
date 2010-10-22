@@ -20,6 +20,7 @@ gem 'agiley-flickr', :git => 'http://github.com/Agiley/flickr.git', :branch => '
 gem "jammit", :git => "http://github.com/documentcloud/jammit.git"
 gem "feed-normalizer"
 gem "icalendar"
+gem "garb"
 
 group :development do
   gem "rails-erd"

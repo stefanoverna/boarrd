@@ -182,3 +182,65 @@ jQuery(document).ready(function($) {
   });
 
 });
+
+
+jQuery.fn.headlines = function(options) {
+
+  var lines = [];
+
+  this.each(function() {
+    var $scrollable_container = $(this);
+    var $scrollable_element = $($(this).children().get(0));
+
+    var old_width = $scrollable_container.css("width");
+    var old_height = $scrollable_container.css("height");
+    $scrollable_container.css({width: "10000px"});
+    var width = $scrollable_element.width();
+    $scrollable_container.css({width: old_width, height: old_height, position: "relative"});
+
+    $scrollable_element.remove();
+    var elements = [];
+    for (var i=0; i<3; i++) {
+      elements.push($scrollable_element.clone().appendTo($scrollable_container).css({width: width, position: "absolute", top: "0px", display: "block"}).css("left", (width + 20) * i));
+    }
+
+    lines.push({
+      els: elements,
+      width: width
+    });
+
+  });
+
+  var currentLine = 0;
+
+  function scroller(lines) {
+    var line = 0;
+
+    return function() {
+      for (var i=0; i<3; i++) {
+        element = lines[line].els[i];
+        width = lines[line].width;
+        var left = parseInt(element.css("left"));
+        if (left <= -(width + 20 - 20)) {
+          var next_el = i - 1;
+          if (next_el < 0) {
+            next_el += 3;
+          }
+          element.css("left", parseInt(lines[line].els[next_el].css("left")) + width + 20);
+          if (++line >= lines.length) {
+            line = 0;
+          }
+        } else {
+          element.css("left", left - 10)
+        }
+      }
+    }
+
+  }
+
+  setInterval(
+    scroller(lines),
+    200
+  );
+
+}

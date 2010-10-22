@@ -23,6 +23,9 @@
   :font-weight normal
   :font-style normal
 
+=museo
+  :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+
 html, body
   :height   100%
   
@@ -44,7 +47,7 @@ body
     :display none
     
   .big-description
-    :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+    +museo
     :font-size 19px
     :line-height 25px
     :text-align justify
@@ -69,7 +72,7 @@ body
     :text-align center
     :margin-bottom 0px
     :margin-top 20px
-    :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+    +museo
     :color #999
     +text-shadow(black, 0px, 5px, 2px)
     :text-align center
@@ -82,21 +85,6 @@ body
         :color white
         :background none
         :padding-left 0px
-  
-  .welcome-block
-    :margin-top 40px
-    
-    .left
-      :width 422px
-      :margin-right 25px
-      :float left
-    
-    .right
-      :width 960px - 422px - 25px
-      :float right
-      
-      .login
-        :width auto !important
   
   #hld
     
@@ -128,7 +116,7 @@ body
       +clearfix
 
   #footer
-    :font-family "MuseoSlab500", "Trebuchet MS", Arial, sans-serif
+    +museo
     :font-size 15px
     :background rgba(0,0,0,0.4)
     :color #aaa
