@@ -27,8 +27,8 @@ class DashboardsController < ApplicationController
   end
 
   def create
-    if current_user.dashboards.count >= 6
-      flash[:alert] = "Sorry, you cannot create more than 6 dashboards!"
+    if current_user.dashboards.count >= 2
+      flash[:alert] = "Sorry, you cannot create more than 2 dashboards!"
       @dashboards = current_user.dashboards
       render "index"
       return

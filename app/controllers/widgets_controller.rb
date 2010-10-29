@@ -22,8 +22,8 @@ class WidgetsController < ApplicationController
 
     @widget = Widget.new(params[:widget])
 
-    if @dashboard.widgets.count >= 9
-      flash[:alert] = "Sorry, you cannot create more than 9 widgets per dashboard!"
+    if @dashboard.widgets.count >= 4
+      flash[:alert] = "Sorry, you cannot create more than 4 widgets per dashboard!"
       render :template => "widgets/errors"
       return
     end
