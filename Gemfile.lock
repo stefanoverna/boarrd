@@ -1,0 +1,188 @@
+GIT
+  remote: http://github.com/Agiley/flickr.git
+  revision: c80b8368170fadab670d3dcbbef73410bf49ba16
+  branch: master
+  specs:
+    agiley-flickr (1.0.14)
+      xml-simple (>= 1.0.12)
+
+GIT
+  remote: http://github.com/documentcloud/jammit.git
+  revision: caf1c68d15c5c428b4134d22a117eb03d60286b5
+  specs:
+    jammit (0.6.0)
+      yui-compressor (>= 0.9.3)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
+    abstract (1.0.0)
+    actionmailer (3.0.6)
+      actionpack (= 3.0.6)
+      mail (~> 2.2.15)
+    actionpack (3.0.6)
+      activemodel (= 3.0.6)
+      activesupport (= 3.0.6)
+      builder (~> 2.1.2)
+      erubis (~> 2.6.6)
+      i18n (~> 0.5.0)
+      rack (~> 1.2.1)
+      rack-mount (~> 0.6.14)
+      rack-test (~> 0.5.7)
+      tzinfo (~> 0.3.23)
+    activemodel (3.0.6)
+      activesupport (= 3.0.6)
+      builder (~> 2.1.2)
+      i18n (~> 0.5.0)
+    activerecord (3.0.6)
+      activemodel (= 3.0.6)
+      activesupport (= 3.0.6)
+      arel (~> 2.0.2)
+      tzinfo (~> 0.3.23)
+    activeresource (3.0.6)
+      activemodel (= 3.0.6)
+      activesupport (= 3.0.6)
+    activesupport (3.0.6)
+    addressable (2.2.5)
+    arel (2.0.9)
+    attribute_normalizer (0.3.1)
+    babosa (0.3.3)
+    bcrypt-ruby (2.1.4)
+    builder (2.1.2)
+    cancan (1.6.4)
+    compass (0.10.6)
+      haml (>= 3.0.4)
+    crack (0.1.8)
+    devise (1.2.1)
+      bcrypt-ruby (~> 2.1.2)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    faraday (0.6.1)
+      addressable (~> 2.2.4)
+      multipart-post (~> 1.1.0)
+      rack (< 2, >= 1.1.0)
+    faraday_middleware (0.6.3)
+      faraday (~> 0.6.0)
+    feed-normalizer (1.5.2)
+      hpricot (>= 0.6)
+      simple-rss (>= 1.1)
+    friendly_id (3.2.1.1)
+      babosa (~> 0.3.0)
+    garb (0.9.1)
+      activesupport (>= 2.2.0)
+      crack (>= 0.1.6)
+    haml (3.0.25)
+    has_scope (0.5.0)
+    hashie (1.0.0)
+    hpricot (0.8.4)
+    i18n (0.5.0)
+    icalendar (1.1.6)
+    inherited_resources (1.2.1)
+      has_scope (~> 0.5.0)
+      responders (~> 0.6.0)
+    inherited_resources_views (0.4.1)
+      inherited_resources (>= 1.0)
+    mail (2.2.15)
+      activesupport (>= 2.3.6)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
+    mime-types (1.16)
+    multi_json (0.0.5)
+    multi_xml (0.2.2)
+    multipart-post (1.1.0)
+    mysql2 (0.2.7)
+    nokogiri (1.4.4)
+    open4 (1.0.1)
+    orm_adapter (0.0.4)
+    polyglot (0.3.1)
+    rack (1.2.2)
+    rack-mount (0.6.14)
+      rack (>= 1.0.0)
+    rack-test (0.5.7)
+      rack (>= 1.0)
+    rails (3.0.6)
+      actionmailer (= 3.0.6)
+      actionpack (= 3.0.6)
+      activerecord (= 3.0.6)
+      activeresource (= 3.0.6)
+      activesupport (= 3.0.6)
+      bundler (~> 1.0)
+      railties (= 3.0.6)
+    rails-erd (0.4.5)
+      activerecord (~> 3.0)
+      activesupport (~> 3.0)
+      ruby-graphviz (~> 0.9.18)
+    railties (3.0.6)
+      actionpack (= 3.0.6)
+      activesupport (= 3.0.6)
+      rake (>= 0.8.7)
+      thor (~> 0.14.4)
+    rake (0.8.7)
+    rash (0.3.0)
+      hashie (~> 1.0.0)
+    responders (0.6.2)
+    roxml (3.1.6)
+      activesupport (>= 2.3.0)
+      nokogiri (>= 1.3.3)
+    ruby-graphviz (0.9.21)
+    sanitize (2.0.1)
+      nokogiri (~> 1.4.4)
+    simple-rss (1.2.3)
+    simple_form (1.3.1)
+    simple_oauth (0.1.4)
+    sqlite3 (1.3.3)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
+    thor (0.14.6)
+    treetop (1.4.9)
+      polyglot (>= 0.3.1)
+    twitter (1.3.0)
+      faraday (~> 0.6.0)
+      faraday_middleware (~> 0.6.3)
+      hashie (~> 1.0.0)
+      multi_json (~> 0.0.5)
+      multi_xml (~> 0.2.0)
+      rash (~> 0.3.0)
+      simple_oauth (~> 0.1.4)
+    tzinfo (0.3.26)
+    warden (1.0.3)
+      rack (>= 1.0.0)
+    xml-simple (1.0.15)
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  agiley-flickr!
+  attribute_normalizer
+  cancan
+  compass
+  devise
+  feed-normalizer
+  friendly_id
+  garb
+  haml
+  icalendar
+  inherited_resources_views
+  jammit!
+  mechanize
+  mysql2
+  rails
+  rails-erd
+  responders
+  roxml
+  sanitize
+  simple_form
+  sqlite3-ruby
+  twitter
